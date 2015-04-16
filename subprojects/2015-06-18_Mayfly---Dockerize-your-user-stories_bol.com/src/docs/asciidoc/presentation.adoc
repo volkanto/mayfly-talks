@@ -1,0 +1,34 @@
+:backend: revealjs
+:revealjs_theme: black
+:revealjs_customtheme: theme/bol.com-v2/bol.com.css
+:revealjs_control: true
+:revealjs_center: true
+:revealjs_history: true
+:revealjs_transition: linear
+:source-highlighter: highlightjs
+:highlightjs_style: highlight.js/styles/solarized_light.css
+:highlightjs_style_alternative: highlight.js/styles/solarized_dark.css
+// Relative to generated HTML
+:imagesdir: ./images
+////
+Relative to original asciidoc document,
+as source code is processed before creation
+of the html-file
+////
+:sources: ../..
+
+= Mayfly
+Maarten Dirkse <https://twitter.com/mdirkse[@mdirkse]>;Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
+
+== !
+
+image::mayfly.png[]
+
+== !
+
+Slides +
+https://bolcom.github.io/mayfly-talks
+https://github.com/bolcom/mayfly-talks
+
+Maarten Dirkse https://twitter.com/mdirkse[@mdirkse] +
+Patrick van Dissel https://twitter.com/pvdissel[@pvdissel]
