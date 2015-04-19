@@ -1,6 +1,6 @@
 include '2015-06-18_Mayfly---Dockerize-your-user-stories_bol.com'
 
-rootProject.name = 'pvdissel-talks'
+rootProject.name = 'mayfly-talks'
 rootProject.children.each { project ->
     String fileBaseName = project.name
     String projectDirName = "subprojects/$fileBaseName"
