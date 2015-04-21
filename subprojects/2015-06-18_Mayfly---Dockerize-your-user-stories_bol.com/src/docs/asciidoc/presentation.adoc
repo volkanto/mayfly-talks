@@ -16,16 +16,12 @@ as source code is processed before creation
 of the html-file
 ////
 :sources: ../..
+:hide-uri-scheme:
 
 = Mayfly
 Maarten Dirkse <https://twitter.com/mdirkse[@mdirkse]>;Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
 
 == Dockerize your user stories
-
-== !
-
-image::mayfly.png[]
-
 
 == Problems
 
@@ -60,35 +56,132 @@ image::mayfly.png[]
 
 === Everything-as-code
 
-* Tests are code
+* Tests as code
 * Environments as code
 * Build pipelines as code
 * Definition of Done as code
 
+[NOTE.speaker]
+--
+Tests as code, in the sense that
+you want your tests to be automated.
+--
+
 == Demo time
 
+As a user, +
+When I start working on a story, +
+Then .. +
 link:{imagesdir}/20140724-mayfly-story-flow-demo.mp4[demo video]
 
 == What happened?
 
+image::..[]
+
+[NOTE.speaker]
+--
 . Jira:
 ** Create story
 ** Story -> in-progress
-. Mayfly creates for story:
+. Grimm creates for story:
 ** feature branch
 ** Jenkins pipeline
 ** environment
+--
 
 === And if I make a change?
 
+image::..[]
 
+[NOTE.speaker]
+--
+. Stash:
+** Sends notification to Mayfly
+** Sends notification to Jenkins
+. Mayfly:
+** fetches latest Definition of Done
+. Jenkins
+** Triggers pipeline for story
+** Pushed Docker image to registry
+** Sends notification to Mayfly about pipeline state
+. Mayfly, on pipeline state notification:
+** Triggers deployment of new version on story environment
+** Verifies latest Definition of Done state
+--
 
+=== And if I resolve my story?
 
-== !
+image::..[]
 
-Slides +
-https://bolcom.github.io/mayfly-talks
+[NOTE.speaker]
+--
+. Jira:
+** Resolve story as fixed
+** Sends notification to Mayfly
+. Mayfly:
+** Verifies if Definition of Done is completely OK
+** If so,
+*** Merge change to `master`
+*** Deploy Docker image to production
+*** Story environment is removed
+*** Feature branch is removed
+*** Jenkins pipeline is removed
+--
+
+=== But what about conflicts on `master`?
+
+image::..[]
+
+== Mayfly architecture
+
+* Grimm, coordinates the building of stories
+* Heimdall, decides if you may deploy your story to Production
+* Mario, lays the pipes for your story
+* Maxis, creates your story environment
+* Ratatouille, ....
+* Devision, Jira plugin
+* Mayfly-Stash, Stash plugin
+
+=== Stack
+
+* Jira
+* Stash
+* Jenkins with JobDSL
+* Mesos with Marathon
+* Docker
+* ActiveMQ
+* Spring Framework
+* Java
+
+== Current state
+
+* Early development
+* Scope limited to simple services
+* Usage
+** 3 team services
+** (5) Mayfly services +
+   (eat our own dogfood)
+
+== Future
+
+* DB support; oracle, mongodb, ...
+* Add more team services
+* Working towards production ready
+* Open source
+
+== Mayfly
+
+image::mayfly.png[]
+
+== We're hiring!
+
+https://banen.bol.com
+
+== Thank you
+
+https://bolcom.github.io/mayfly-talks[Slides] +
 https://github.com/bolcom/mayfly-talks
+
 
 Maarten Dirkse https://twitter.com/mdirkse[@mdirkse] +
 Patrick van Dissel https://twitter.com/pvdissel[@pvdissel]
