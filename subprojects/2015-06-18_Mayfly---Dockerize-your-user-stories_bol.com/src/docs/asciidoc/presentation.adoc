@@ -20,9 +20,69 @@ of the html-file
 = Mayfly
 Maarten Dirkse <https://twitter.com/mdirkse[@mdirkse]>;Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
 
+== Dockerize your user stories
+
 == !
 
 image::mayfly.png[]
+
+
+== Problems
+
+* Central test environment
+* Multiple teams in single codebase
+* Merge conflicts on `master`
+* Unstable `master`
+
+[NOTE.speaker]
+--
+* What's the problem that Mayfly solves?
+** Central test environment
+** Multiple teams in single codebase
+** Merge conflicts on `master`
+** Unstable `master`
+--
+
+== Principles
+
+* Continuous Delivery
+* `master` == production
+* Stories are short-lived
+
+[NOTE.speaker]
+--
+* What principles does Mayfly follow, enforce, ...?
+** continuous delivery
+*** no complete integration tests, unless production
+** Master is production
+** stories are short-lived
+--
+
+=== Everything-as-code
+
+* Tests are code
+* Environments as code
+* Build pipelines as code
+* Definition of Done as code
+
+== Demo time
+
+link:{imagesdir}/20140724-mayfly-story-flow-demo.mp4[demo video]
+
+== What happened?
+
+. Jira:
+** Create story
+** Story -> in-progress
+. Mayfly creates for story:
+** feature branch
+** Jenkins pipeline
+** environment
+
+=== And if I make a change?
+
+
+
 
 == !
 

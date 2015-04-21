@@ -1,0 +1,48 @@
+= Mayfly - Dockerize your user stories
+
+* What's the problem that Mayfly solves?
+** central test environment
+** multiple teams in single codebase
+** merge conflicts on master
+** unstable master
+
+* What principles does Mayfly follow, enforce, ...?
+** continuous delivery
+*** no complete integration tests, unless production
+** Master is production
+** stories are short-lived
+
+** Everything-as-code
+*** Tests are code
+*** Environments as code
+*** Build pipelines as code
+*** Definition of Done as code
+
+* How does it solve the problem?
+** demo time?
+
+* What's the stack of Mayfly?
+
+** feature branches
+*** merge to master, PRs to branches (visualize)
+
+** mayfly architecture
+
+** Jira
+** Stash
+** Mesos with Marathon
+** Docker
+** ActiveMQ
+** Spring Framework
+** Java
+
+
+
+* Current state?
+** Mayfly services in Mayfly
+** 3 team services
+* Future
+** Open-source
+** Roadmap, ideas
+
+* What questions were asked during the Mayfly ignite talk?
