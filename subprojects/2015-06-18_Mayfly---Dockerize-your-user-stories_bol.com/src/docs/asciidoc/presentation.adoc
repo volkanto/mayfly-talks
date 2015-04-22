@@ -25,7 +25,7 @@ Maarten Dirkse <https://twitter.com/mdirkse[@mdirkse]>;Patrick van Dissel <https
 
 == Problems
 
-* Central test environment
+* Central, shared test environment
 * Multiple teams in single codebase
 * Merge conflicts on `master`
 * Unstable `master`
@@ -129,8 +129,93 @@ image::mayfly-resolve-story-flow.png[]
 --
 
 === But what about conflicts on `master`?
+[%step]
+* That never happens (no, really)
 
-image::..[]
+[data-transition=none]
+=== Automated SCM workflow
+image::scm-flow/scmflow1.png[]
+
+[data-transition=none]
+=== Automated SCM workflow
+image::scm-flow/scmflow2.png[]
+
+[data-transition=none]
+=== Automated SCM workflow
+image::scm-flow/scmflow3.png[]
+
+[data-transition=none]
+=== Automated SCM workflow
+image::scm-flow/scmflow4.png[]
+
+[data-transition=none]
+=== Automated SCM workflow
+image::scm-flow/scmflow5.png[]
+
+[data-transition=none]
+=== Automated SCM workflow
+image::scm-flow/scmflow6.png[]
+
+[data-transition=none]
+=== Automated SCM workflow
+image::scm-flow/scmflow7.png[]
+
+[data-transition=none]
+=== Automated SCM workflow
+image::scm-flow/scmflow8.png[]
+
+[data-transition=none]
+=== Automated SCM workflow
+image::scm-flow/scmflow9.png[]
+
+[data-transition=none]
+=== Automated SCM workflow
+image::scm-flow/scmflow10.png[]
+
+=== But I need an integration testing environment!
+[%step]
+* No, you don't.
+* Stop whining.
+
+[data-transition=none]
+=== Old style development
+image::rip-acc/ripacc1.png[]
+
+[data-transition=none]
+=== Old style development
+image::rip-acc/ripacc2.png[]
+
+[data-transition=none]
+=== Old style development
+image::rip-acc/ripacc3.png[]
+
+[data-transition=none]
+=== Integration testing
+image::rip-acc/ripacc4.png[]
+
+[data-transition=none]
+=== Continuous delivery
+image::rip-acc/ripacc5.png[]
+
+[data-transition=none]
+=== Integration test time!
+image::rip-acc/ripacc6.png[]
+
+[data-transition=none]
+=== "..... <sigh>"
+image::rip-acc/ripacc7.png[]
+
+[data-transition=none]
+=== Get rid of the version lock
+image::rip-acc/ripacc8.png[]
+
+=== No integration environment?!
+image::testinproduction.jpg[]
+
+=== No integration environment?!
+[%step]
+* Accept that, if you want CD, certain things can only be tested in production
+* Mayfly uses mocks and stubbing to achieve PRO-like fidelity in user story environments
 
 == Mayfly architecture
 
@@ -150,7 +235,7 @@ image::..[]
 * Mesos with Marathon
 * Docker
 * ActiveMQ
-* Spring Framework
+* Backspin
 * Java
 
 == Current state
@@ -168,10 +253,6 @@ image::..[]
 * Add more team services
 * Working towards production ready
 * Open source
-
-== Mayfly
-
-image::mayfly.png[]
 
 == We're hiring!
 
