@@ -76,7 +76,7 @@ link:{imagesdir}/20140724-mayfly-story-flow-demo.mp4[demo video]
 
 == What happened?
 
-image::..[]
+image::mayfly-open-story-flow.png[]
 
 [NOTE.speaker]
 --
@@ -91,7 +91,7 @@ image::..[]
 
 === And if I make a change?
 
-image::..[]
+image::mayfly-make-change-flow.png[]
 
 [NOTE.speaker]
 --
@@ -111,7 +111,7 @@ image::..[]
 
 === And if I resolve my story?
 
-image::..[]
+image::mayfly-resolve-story-flow.png[]
 
 [NOTE.speaker]
 --
@@ -138,7 +138,7 @@ image::..[]
 * Heimdall, decides if you may deploy your story to Production
 * Mario, lays the pipes for your story
 * Maxis, creates your story environment
-* Ratatouille, ....
+* Ratatouille, the rat called git
 * Devision, Jira plugin
 * Mayfly-Stash, Stash plugin
 
