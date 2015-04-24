@@ -174,8 +174,7 @@ image::scm-flow/scmflow10.png[]
 
 === But I need an integration testing environment!
 [%step]
-* No, you don't.
-* Stop whining.
+* No, you don't (really)
 
 [data-transition=none]
 === Old style development
