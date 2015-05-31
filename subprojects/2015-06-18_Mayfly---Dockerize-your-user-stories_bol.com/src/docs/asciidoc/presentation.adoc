@@ -260,8 +260,8 @@ https://banen.bol.com
 == Thank you
 
 https://mayflycd.github.io/mayfly-talks[Slides] +
-https://github.com/mayflycd/mayfly-talks
-https://bolcom.github.io
+https://github.com/mayflycd/mayfly-talks +
+http://bolcom.github.io
 
 
 Maarten Dirkse https://twitter.com/mdirkse[@mdirkse] +
