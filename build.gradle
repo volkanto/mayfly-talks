@@ -15,7 +15,7 @@ import org.asciidoctor.gradle.AsciidoctorTask
 
 apply plugin: "org.ajoberstar.github-pages"
 githubPages {
-    repoUri = 'git@github.com:bolcom/mayfly-talks.git'
+    repoUri = 'git@github.com:mayflycd/mayfly-talks.git'
     pages {
         subprojects.each { p ->
             // TODO: Use output path from 'presentation' task, instead of hardcoding

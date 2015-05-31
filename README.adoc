@@ -1,7 +1,7 @@
 = Mayfly Presentations
 
 Just want to view the presentations?
-Go to: https://bolcom.github.io/mayfly-talks
+Go to: https://mayflycd.github.io/mayfly-talks
 
 Want to see the sources?
 Take a look in the `subprojects` directory for the specific presentations.
