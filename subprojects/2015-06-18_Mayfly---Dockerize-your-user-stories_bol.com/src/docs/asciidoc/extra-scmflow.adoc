@@ -1,0 +1,43 @@
+= But what about conflicts on `master`?
+[%step]
+* That never happens (no, really)
+
+[data-transition=none]
+== Automated SCM workflow
+image::scm-flow/scmflow1.png[]
+
+[data-transition=none]
+== Automated SCM workflow
+image::scm-flow/scmflow2.png[]
+
+[data-transition=none]
+== Automated SCM workflow
+image::scm-flow/scmflow3.png[]
+
+[data-transition=none]
+== Automated SCM workflow
+image::scm-flow/scmflow4.png[]
+
+[data-transition=none]
+== Automated SCM workflow
+image::scm-flow/scmflow5.png[]
+
+[data-transition=none]
+== Automated SCM workflow
+image::scm-flow/scmflow6.png[]
+
+[data-transition=none]
+== Automated SCM workflow
+image::scm-flow/scmflow7.png[]
+
+[data-transition=none]
+== Automated SCM workflow
+image::scm-flow/scmflow8.png[]
+
+[data-transition=none]
+== Automated SCM workflow
+image::scm-flow/scmflow9.png[]
+
+[data-transition=none]
+== Automated SCM workflow
+image::scm-flow/scmflow10.png[]

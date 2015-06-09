@@ -1,6 +1,6 @@
 :backend: revealjs
 :revealjs_theme: black
-:revealjs_customtheme: theme/bol.com-v2/bol.com.css
+:revealjs_customtheme: theme/bol.com-v1/bol.com.css
 :revealjs_control: true
 :revealjs_center: true
 :revealjs_history: true
@@ -22,6 +22,16 @@ of the html-file
 Maarten Dirkse <https://twitter.com/mdirkse[@mdirkse]>;Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
 
 == Dockerize your user stories
+
+=== Mayfly
+
+*user story*-centric +
+continuous delivery +
+*development* platform +
+using Docker
+
+include::userstory.adoc[leveloffset=+1]
+include::mayfly.adoc[leveloffset=+1]
 
 == Problems
 
@@ -74,147 +84,6 @@ When I start working on a story, +
 Then .. +
 link:{imagesdir}/20140724-mayfly-story-flow-demo.mp4[demo video]
 
-== What happened?
-
-image::mayfly-open-story-flow.png[]
-
-[NOTE.speaker]
---
-. Jira:
-** Create story
-** Story -> in-progress
-. Grimm creates for story:
-** feature branch
-** Jenkins pipeline
-** environment
---
-
-=== And if I make a change?
-
-image::mayfly-make-change-flow.png[]
-
-[NOTE.speaker]
---
-. Stash:
-** Sends notification to Mayfly
-** Sends notification to Jenkins
-. Mayfly:
-** fetches latest Definition of Done
-. Jenkins
-** Triggers pipeline for story
-** Pushed Docker image to registry
-** Sends notification to Mayfly about pipeline state
-. Mayfly, on pipeline state notification:
-** Triggers deployment of new version on story environment
-** Verifies latest Definition of Done state
---
-
-=== And if I resolve my story?
-
-image::mayfly-resolve-story-flow.png[]
-
-[NOTE.speaker]
---
-. Jira:
-** Resolve story as fixed
-** Sends notification to Mayfly
-. Mayfly:
-** Verifies if Definition of Done is completely OK
-** If so,
-*** Merge change to `master`
-*** Deploy Docker image to production
-*** Story environment is removed
-*** Feature branch is removed
-*** Jenkins pipeline is removed
---
-
-=== But what about conflicts on `master`?
-[%step]
-* That never happens (no, really)
-
-[data-transition=none]
-=== Automated SCM workflow
-image::scm-flow/scmflow1.png[]
-
-[data-transition=none]
-=== Automated SCM workflow
-image::scm-flow/scmflow2.png[]
-
-[data-transition=none]
-=== Automated SCM workflow
-image::scm-flow/scmflow3.png[]
-
-[data-transition=none]
-=== Automated SCM workflow
-image::scm-flow/scmflow4.png[]
-
-[data-transition=none]
-=== Automated SCM workflow
-image::scm-flow/scmflow5.png[]
-
-[data-transition=none]
-=== Automated SCM workflow
-image::scm-flow/scmflow6.png[]
-
-[data-transition=none]
-=== Automated SCM workflow
-image::scm-flow/scmflow7.png[]
-
-[data-transition=none]
-=== Automated SCM workflow
-image::scm-flow/scmflow8.png[]
-
-[data-transition=none]
-=== Automated SCM workflow
-image::scm-flow/scmflow9.png[]
-
-[data-transition=none]
-=== Automated SCM workflow
-image::scm-flow/scmflow10.png[]
-
-=== But I need an integration testing environment!
-[%step]
-* No, you don't (really)
-
-[data-transition=none]
-=== Old style development
-image::rip-acc/ripacc1.png[]
-
-[data-transition=none]
-=== Old style development
-image::rip-acc/ripacc2.png[]
-
-[data-transition=none]
-=== Old style development
-image::rip-acc/ripacc3.png[]
-
-[data-transition=none]
-=== Integration testing
-image::rip-acc/ripacc4.png[]
-
-[data-transition=none]
-=== Continuous delivery
-image::rip-acc/ripacc5.png[]
-
-[data-transition=none]
-=== Integration test time!
-image::rip-acc/ripacc6.png[]
-
-[data-transition=none]
-=== "..... <sigh>"
-image::rip-acc/ripacc7.png[]
-
-[data-transition=none]
-=== Get rid of the version lock
-image::rip-acc/ripacc8.png[]
-
-=== No integration environment?!
-image::testinproduction.jpg[]
-
-=== No integration environment?!
-[%step]
-* Accept that, if you want CD, certain things can only be tested in production
-* Mayfly uses mocks and stubbing to achieve PRO-like fidelity in user story environments
 
 == Mayfly architecture
 
@@ -266,3 +135,9 @@ http://bolcom.github.io
 
 Maarten Dirkse https://twitter.com/mdirkse[@mdirkse] +
 Patrick van Dissel https://twitter.com/pvdissel[@pvdissel]
+
+== Extra
+
+include::extra-storyflow.adoc[leveloffset=+1]
+include::extra-scmflow.adoc[leveloffset=+1]
+include::extra-rip-acc.adoc[leveloffset=+1]

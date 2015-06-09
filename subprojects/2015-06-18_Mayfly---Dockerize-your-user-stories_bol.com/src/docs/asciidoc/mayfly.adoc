@@ -1,0 +1,16 @@
+= Mayfly
+
+Provides for each user story:
+
+- feature branch
+- continuous integration
+- environment
+- definition of done check
+
+= Everything-as-code
+
+- Tests as code
+- Build pipelines as code
+- Environments as code
+- Definition of Done as code
+

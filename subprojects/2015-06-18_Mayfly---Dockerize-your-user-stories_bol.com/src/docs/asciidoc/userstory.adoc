@@ -1,0 +1,40 @@
+= User story flow
+
+image::story-flow.png[height=500]
+
+== Characteristics
+
+|===
+|I |Independent
+|N |Negotiable
+|V |Valuable
+|E |Estimable
+|S |Small
+|T |Testable
+|===
+
+[NOTE.speaker]
+--
+
+|===
+|I |Independent |The user story should be self-contained, in a way that there is no inherent dependency on another user story.
+|N |Negotiable  |User stories, up until they are part of an iteration, can always be changed and rewritten.
+|V |Valuable    |A user story must deliver value to the end user.
+|E |Estimable   |You must always be able to estimate the size of a user story.
+|S |Small       |User stories should not be so big as to become impossible to plan/task/prioritize with a certain level of certainty.
+|T |Testable    |The user story or its related description must provide the necessary information to make test development possible
+|===
+
+Based on these characteristics, +
+a user story is completely ... +
+standalone +
+isolation
+
+--
+
+== User story
+
+- is short lived feature branch
+- can have its own continuous integration
+- can be accepted independently
+- done == ready for production
