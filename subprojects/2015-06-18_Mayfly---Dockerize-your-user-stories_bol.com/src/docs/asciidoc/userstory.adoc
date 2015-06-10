@@ -15,7 +15,6 @@ image::story-flow.png[height=500]
 
 [NOTE.speaker]
 --
-
 |===
 |I |Independent |The user story should be self-contained, in a way that there is no inherent dependency on another user story.
 |N |Negotiable  |User stories, up until they are part of an iteration, can always be changed and rewritten.
@@ -26,15 +25,22 @@ image::story-flow.png[height=500]
 |===
 
 Based on these characteristics, +
-a user story is completely ... +
-standalone +
-isolation
-
+a user story is completely +
+standalone and can be developed in isolation
 --
 
 == User story
 
-- is short lived feature branch
+- can be a short lived feature branch
+- can have its own continuous integration
+- can be accepted independently
+- done == ready for production
+
+[NOTE.speaker]
+--
+And therefor, a user story:
+
+- can be a short lived feature branch
 - can have its own continuous integration
 - can be accepted independently
 - done == ready for production
