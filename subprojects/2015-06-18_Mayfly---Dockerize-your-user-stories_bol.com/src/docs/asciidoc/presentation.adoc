@@ -32,13 +32,19 @@ using Docker
 
 include::userstory.adoc[leveloffset=+1]
 include::mayfly.adoc[leveloffset=+1]
+include::dev-platform.adoc[leveloffset=+1]
 
 == Future
 
 * DB support; oracle, mongodb, ...
 * Add more team services
 * Working towards production ready
-* Open source
+
+=== Open source
+
+http://mayfly.cd
+http://bolcom.github.io
+
 
 == We're hiring!
 
