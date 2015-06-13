@@ -2,6 +2,12 @@
 
 image::story-flow.png[height=500]
 
+[NOTE.speaker]
+--
+User stories flow from the backlog to production +
+from todo to done on your agile board.
+--
+
 == Characteristics
 
 |===
@@ -24,9 +30,11 @@ image::story-flow.png[height=500]
 |T |Testable    |The user story or its related description must provide the necessary information to make test development possible
 |===
 
-Based on these characteristics, +
-a user story is completely +
-standalone and can be developed in isolation
+You INVEST in each story to make it +
+self-contained, valuable, small and testable +
+so it can be developed in isolation
+
+And therefor, ...
 --
 
 == User story
@@ -38,9 +46,10 @@ standalone and can be developed in isolation
 
 [NOTE.speaker]
 --
-And therefor, a user story:
+a user story:
 
 - can be a short lived feature branch
 - can have its own continuous integration
 - can be accepted independently
-- done == ready for production
+- and when it's done, it should be ready for production
+--
