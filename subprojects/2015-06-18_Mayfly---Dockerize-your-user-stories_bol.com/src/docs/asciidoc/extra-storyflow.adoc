@@ -1,4 +1,6 @@
-= What happened?
+= Flow of a story
+
+== Start working on a story
 
 image::mayfly-open-story-flow.png[]
 
@@ -13,7 +15,7 @@ image::mayfly-open-story-flow.png[]
 ** environment
 --
 
-== And if I make a change?
+== Make a change
 
 image::mayfly-make-change-flow.png[]
 
@@ -33,7 +35,7 @@ image::mayfly-make-change-flow.png[]
 ** Verifies latest Definition of Done state
 --
 
-== And if I resolve my story?
+== Resolve story
 
 image::mayfly-resolve-story-flow.png[]
 

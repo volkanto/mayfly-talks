@@ -1,6 +1,6 @@
 = But I need an integration testing environment!
 [%step]
-* No, you don't (really)
+* No, you don't
 
 [data-transition=none]
 == Old style development
