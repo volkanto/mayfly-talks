@@ -1,0 +1,36 @@
+= Code on `master`
+
+`master` == production
+
+Question to team:
+Are PRs created because a push/merge to master is done in Stash,
+as a results of a signal from Stash? Or because Grimm received
+a "resolve story" event and triggered Rat to do it?
+
+[NOTE.speaker]
+--
+Your users can enjoy the new features!
+
+We strongly believe that +
+for Continuous Delivery to work +
+`master` should be equal to production.
+
+An integration environment does not fit in
+the Continuous Delivery flow.
+
+But Mayfly doesn't really care about production, +
+as long as the `master` branch is not changed
+outside Mayfly.
+--
+
+
+== No integration environment?!
+
+image::testinproduction.jpg[]
+
+
+[NOTE.speaker]
+--
+* Accept that, if you want CD, certain things can only be tested in production
+* Mayfly uses mocks and stubbing to achieve PRO-like fidelity in user story environments
+--

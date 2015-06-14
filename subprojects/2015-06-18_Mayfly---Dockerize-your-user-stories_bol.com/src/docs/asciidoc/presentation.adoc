@@ -36,6 +36,7 @@ include::userstory.adoc[leveloffset=+1]
 include::mayfly.adoc[leveloffset=+1]
 include::dev-platform.adoc[leveloffset=+1]
 include::demo.adoc[leveloffset=+1]
+include::on-master.adoc[leveloffset=+1]
 
 
 == Current state
@@ -78,7 +79,7 @@ https://banen.bol.com
 == Thank you
 
 https://mayflycd.github.io/mayfly-talks[Slides] +
-https://github.com/mayflycd/mayfly-talks +
+http://mayfly.cd +
 http://bolcom.github.io
 
 
