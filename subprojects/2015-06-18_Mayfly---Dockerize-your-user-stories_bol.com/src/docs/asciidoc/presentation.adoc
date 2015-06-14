@@ -21,7 +21,9 @@ of the html-file
 = Mayfly
 Maarten Dirkse <https://twitter.com/mdirkse[@mdirkse]>;Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
 
+
 == Dockerize your user stories
+
 
 === Mayfly
 
@@ -33,6 +35,18 @@ using Docker
 include::userstory.adoc[leveloffset=+1]
 include::mayfly.adoc[leveloffset=+1]
 include::dev-platform.adoc[leveloffset=+1]
+include::demo.adoc[leveloffset=+1]
+
+
+== Current state
+
+* Early development
+* Scope limited to simple services
+* Usage
+** 12 team services
+** 5 Mayfly services +
+   (eat our own dogfood)
+
 
 == Future
 
@@ -40,15 +54,26 @@ include::dev-platform.adoc[leveloffset=+1]
 * Add more team services
 * Working towards production ready
 
+
 === Open source
 
-http://mayfly.cd
+http://mayfly.cd +
 http://bolcom.github.io
+
+
+== Meetup
+
+http://www.meetup.com/Continuous-Delivery-Amsterdam/events/222957046/[Continuous Delivery Meetup - Mayfly]
+
+Thursday, June 25, 2015 +
+6:00 PM to 10:00 PM +
+at bol.com
 
 
 == We're hiring!
 
 https://banen.bol.com
+
 
 == Thank you
 
@@ -60,8 +85,9 @@ http://bolcom.github.io
 Maarten Dirkse https://twitter.com/mdirkse[@mdirkse] +
 Patrick van Dissel https://twitter.com/pvdissel[@pvdissel]
 
+
 == Extra
 
-include::extra-storyflow.adoc[leveloffset=+1]
 include::extra-scmflow.adoc[leveloffset=+1]
+include::extra-storyflow.adoc[leveloffset=+1]
 include::extra-rip-acc.adoc[leveloffset=+1]
