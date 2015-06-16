@@ -4,14 +4,14 @@
 --
 Your users can enjoy the new features!
 
-We strongly believe that +
-for Continuous Delivery to work +
+We strongly believe that
+for Continuous Delivery to work
 `master` should be equal to production.
 
 An integration environment does not fit in
 the Continuous Delivery flow.
 
-But Mayfly doesn't really care about production, +
+But Mayfly doesn't really care about production,
 as long as the `master` branch is not changed
 outside Mayfly.
 --

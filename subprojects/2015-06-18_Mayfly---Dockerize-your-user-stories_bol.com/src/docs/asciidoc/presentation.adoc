@@ -38,10 +38,11 @@ include::dev-platform.adoc[leveloffset=+1]
 include::demo.adoc[leveloffset=+1]
 include::on-master.adoc[leveloffset=+1]
 
-=== Meetup
+=== Continuous Delivery Meetup
 
-http://meetup.com/Continuous-Delivery-Amsterdam +
-http://www.meetup.com/Continuous-Delivery-Amsterdam/events/222957046/[Continuous Delivery Meetup - Mayfly]
+http://meetup.com/Continuous-Delivery-Amsterdam
+
+http://www.meetup.com/Continuous-Delivery-Amsterdam/events/222957046/[Mayfly]
 
 Thursday, June 25, 2015 +
 18:00 to 22:00 +
@@ -49,8 +50,9 @@ at bol.com
 
 [NOTE.speaker]
 --
-For a more in-depth look on Mayfly, +
-join us at the Continuous Delivery meetup. +
+For a more in-depth look on Mayfly,
+join us at the Continuous Delivery meetup.
+
 Next Thursday at bol.com +
 Please register at meetup.com
 --
@@ -83,7 +85,11 @@ http://bolcom.github.io
 
 https://banen.bol.com
 
-https://banen.bol.com/events/tech-beers-bbq-it-summer-event/[Beer, tech and BBQ event] +
+
+=== Beer, tech and BBQ event
+
+https://banen.bol.com/events/
+
 Thursday, Juli 9, 2015 +
 16:30 to 20:00 +
 at bol.com

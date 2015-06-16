@@ -44,7 +44,7 @@ So our starting point is:
 - and Stash, our code repository
 
 From there, Mayfly is triggered. +
-And Mayfly talks to the infrastructure and back +
+And Mayfly talks to the infrastructure and back
 to the 3rd party tools.
 --
 
@@ -89,18 +89,18 @@ to the 3rd party tools.
 
 [NOTE.speaker]
 --
-Mayfly is a development platform +
+Mayfly is a development platform,
 consisting of:
 
 - Freud, to sent user story activities to Jira
 - Devision, Jira plugin to act on actions on user stories in Jira
 - Grimm, coordinates the building of stories
 - Ratatouille, the rat called git
-- Heimdall, decides if your story is production ready +
+- Heimdall, decides if your story is production ready
   based on the Definition of Done as code
-- Mario, lays the pipes for your story +
+- Mario, lays the pipes for your story
   based on the Build Pipeline as code
-- Maxis, creates your story environment +
+- Maxis, creates your story environment
   based on the Environment as code
 --
 
@@ -145,8 +145,8 @@ consisting of:
 
 [NOTE.speaker]
 --
-The infrastructure implementation we're currently +
-using is based on Mesos with Docker containers, +
+The infrastructure implementation we're currently
+using is based on Mesos with Docker containers,
 and Marathon on top of Mesos.
 --
 
@@ -193,6 +193,6 @@ and Marathon on top of Mesos.
 --
 With all the relations, it looks like this. +
 The core entity of Mayfly is the user story. +
-Which is overly clear by all relations to +
+Which is overly clear by all relations to
 and from Grimm, our user stories service.
 --
