@@ -20,7 +20,7 @@ For each user story, you get:
   production ready, according to the Definition of Done
 --
 
-= Everything-as-code
+== Everything-as-code
 
 - Build pipelines as code
 - Environments as code

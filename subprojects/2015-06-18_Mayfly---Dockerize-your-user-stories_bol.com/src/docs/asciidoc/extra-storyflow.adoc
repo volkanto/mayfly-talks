@@ -1,5 +1,7 @@
 = Flow of a story
 
+image::story-flow.png[height=500]
+
 == Start working on a story
 
 image::mayfly-open-story-flow.png[]

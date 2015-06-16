@@ -37,7 +37,9 @@ image::rip-acc/ripacc8.png[]
 == No integration environment?!
 image::testinproduction.jpg[]
 
-== No integration environment?!
-[%step]
+
+[NOTE.speaker]
+--
 * Accept that, if you want CD, certain things can only be tested in production
 * Mayfly uses mocks and stubbing to achieve PRO-like fidelity in user story environments
+--

@@ -1,11 +1,4 @@
-= Code on `master`
-
-`master` == production
-
-Question to team:
-Are PRs created because a push/merge to master is done in Stash,
-as a results of a signal from Stash? Or because Grimm received
-a "resolve story" event and triggered Rat to do it?
+= `master` == production
 
 [NOTE.speaker]
 --
