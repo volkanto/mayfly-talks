@@ -65,7 +65,7 @@ Please register at meetup.com
 * Usage
 ** 12 team services
 ** 5 Mayfly services +
-   (eat our own dogfood)
+   (eating our own dogfood)
 
 
 == Future

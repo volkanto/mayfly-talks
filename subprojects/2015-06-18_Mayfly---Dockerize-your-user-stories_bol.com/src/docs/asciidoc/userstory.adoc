@@ -4,7 +4,7 @@ image::story-flow.png[height=500]
 
 [NOTE.speaker]
 --
-User stories flow from the backlog to production +
+User stories flow from the backlog to production, +
 from todo to done on your agile board.
 --
 
