@@ -35,33 +35,44 @@ based on the Build Pipeline as code</p></li><li><p>Maxis, creates your story env
 based on the Environment as code</p></li></ul></div></aside></section><section id="_development_platform_3" data-transition="none"><h2>Development platform</h2><div class="imageblock" style=""><div class="content"><img src="./images/diag-31239f766a7632e91139df724e811008.png" alt="Diagram" width="610" height="490"></div></div>
 <aside class="notes"><div class="paragraph"><p>The infrastructure implementation we&#8217;re currently
 using is based on Mesos with Docker containers,
-and Marathon on top of Mesos.</p></div></aside></section><section id="_development_platform_4" data-transition="none"><h2>Development platform</h2><div class="imageblock" style=""><div class="content"><img src="./images/diag-6b78307372a65e9689dcd36fc8d47e59.png" alt="Diagram" width="610" height="490"></div></div>
+and Marathon on top of Mesos.</p></div></aside></section><section id="_development_platform_4" data-transition="none"><h2>Development platform</h2><div class="imageblock" style=""><div class="content"><img src="./images/diag-e60a4851682669d57ddadf76969c5e79.png" alt="Diagram" width="610" height="490"></div></div>
 <aside class="notes"><div class="paragraph"><p>With all the relations, it looks like this.<br>
 The core entity of Mayfly is the user story.<br>
 Which is overly clear by all relations to
 and from Grimm, our user stories service.</p></div></aside></section></section>
-<section id="_demo"><h2>Demo</h2></section>
-<section><section id="__code_master_code_production"><h2><code>master</code> == production</h2><aside class="notes"><div class="paragraph"><p>Your users can enjoy the new features!</p></div>
-<div class="paragraph"><p>We strongly believe that
+<section><section id="_demo"><h2>Demo</h2></section><section id="_alternative_demo"><h2>Alternative demo</h2><div class="paragraph"><p>As a user,<br>
+When I start working on a story,<br>
+Then Mayfly provides me with &#8230;&#8203;<br>
+(<a href="./images/20140724-mayfly-story-flow-demo.mp4">click for demo video</a>)</p></div></section></section>
+<section><section id="__code_master_code_production"><h2><code>master</code> == production</h2><aside class="notes"><div class="paragraph"><p>Your users can only enjoy the new feature
+if it&#8217;s on production.</p></div>
+<div class="paragraph"><p>So we strongly believe that
 for Continuous Delivery to work
 <code>master</code> should be equal to production.</p></div>
 <div class="paragraph"><p>An integration environment does not fit in
 the Continuous Delivery flow.</p></div>
 <div class="paragraph"><p>But Mayfly doesn&#8217;t really care about production,
 as long as the <code>master</code> branch is not changed
-outside Mayfly.</p></div></aside></section><section id="_no_integration_environment"><h2>No integration environment?!</h2><div class="imageblock" style=""><div class="content"><img src="./images/testinproduction.jpg" alt="testinproduction"></div></div>
-<aside class="notes"><div class="ulist"><ul><li><p>Accept that, if you want CD, certain things can only be tested in production</p></li><li><p>Mayfly uses mocks and stubbing to achieve PRO-like fidelity in user story environments</p></li></ul></div></aside></section><section id="_continuous_delivery_meetup"><h2>Continuous Delivery Meetup</h2><div class="paragraph"><p><a href="http://meetup.com/Continuous-Delivery-Amsterdam" class="bare">meetup.com/Continuous-Delivery-Amsterdam</a></p></div>
+outside Mayfly.</p></div></aside></section><section><div class="imageblock" style=""><div class="content"><img src="./images/docker-logo.png" alt="docker logo" width="500"></div></div>
+<aside class="notes"><div class="paragraph"><p>So we use Docker as the light-weight runtime
+and packaging tool. Running applications
+on your local machine in the same way as
+on production.</p></div></aside></section><section id="_no_integration_environment"><h2>No integration environment?!</h2><div class="imageblock" style=""><div class="content"><img src="./images/testinproduction.jpg" alt="testinproduction"></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Accept that, if you want CD, certain things can only be tested in production</p></li><li><p>Mayfly uses mocks and stubbing to achieve PRO-like fidelity in user story environments</p></li></ul></div></aside></section><section id="_there_is_more"><h2>There is more</h2><div class="ulist"><ul><li><p>SCM workflow</p></li><li><p>Story workflow</p></li><li><p>Why no integration environment</p></li><li><p>Life as a Docker image</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>And there is more to it than this, like</p></div>
+<div class="ulist"><ul><li><p>How do we handle the SCM flow?</p></li><li><p>Why do we think an integration environment
+does not fit in the Continuous Delivery flow?</p></li></ul></div>
+<div class="paragraph"><p>For more in-depth info and discussions, &#8230;&#8203;</p></div></aside></section><section id="_continuous_delivery_meetup"><h2>Continuous Delivery Meetup</h2><div class="paragraph"><p><a href="http://meetup.com/Continuous-Delivery-Amsterdam" class="bare">meetup.com/Continuous-Delivery-Amsterdam</a></p></div>
 <div class="paragraph"><p><a href="http://www.meetup.com/Continuous-Delivery-Amsterdam/events/222957046/">Mayfly</a></p></div>
 <div class="paragraph"><p>Thursday, June 25, 2015<br>
 18:00 to 22:00<br>
 at bol.com</p></div>
-<aside class="notes"><div class="paragraph"><p>For a more in-depth look on Mayfly,
-join us at the Continuous Delivery meetup.</p></div>
+<aside class="notes"><div class="paragraph"><p>Join us at the Continuous Delivery meetup.</p></div>
 <div class="paragraph"><p>Next Thursday at bol.com<br>
 Please register at meetup.com</p></div></aside></section></section>
 <section id="_current_state"><h2>Current state</h2><div class="ulist"><ul><li><p>Early development</p></li><li><p>Scope limited to simple services</p></li><li><p>Usage</p><div class="ulist"><ul><li><p>12 team services</p></li><li><p>5 Mayfly services<br>
 (eating our own dogfood)</p></li></ul></div></li></ul></div></section>
-<section><section id="_future"><h2>Future</h2><div class="ulist"><ul><li><p>DB support; oracle, mongodb, &#8230;&#8203;</p></li><li><p>Add more team services</p></li><li><p>Working towards production ready</p></li></ul></div></section><section id="_open_source"><h2>Open source</h2><div class="paragraph"><p><a href="http://mayfly.cd" class="bare">mayfly.cd</a><br>
+<section><section id="_future"><h2>Future</h2><div class="ulist"><ul><li><p>DB support; Oracle, MongoDB, &#8230;&#8203;</p></li><li><p>Add more team services</p></li><li><p>Working towards production ready</p></li></ul></div></section><section id="_open_source"><h2>Open source</h2><div class="paragraph"><p><a href="http://mayfly.cd" class="bare">mayfly.cd</a><br>
 <a href="http://bolcom.github.io" class="bare">bolcom.github.io</a></p></div></section></section>
 <section><section id="_we_re_hiring"><h2>We&#8217;re hiring!</h2><div class="paragraph"><p><a href="https://banen.bol.com" class="bare">banen.bol.com</a></p></div></section><section id="_beer_tech_and_bbq_event"><h2>Beer, tech and BBQ event</h2><div class="paragraph"><p><a href="https://banen.bol.com/events/" class="bare">banen.bol.com/events/</a></p></div>
 <div class="paragraph"><p>Thursday, Juli 9, 2015<br>
