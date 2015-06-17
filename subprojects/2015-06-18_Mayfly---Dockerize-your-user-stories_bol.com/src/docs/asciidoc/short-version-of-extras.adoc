@@ -1,0 +1,81 @@
+= `master` == production
+
+[NOTE.speaker]
+--
+Your users can only enjoy the new feature
+if it's on production.
+
+So we strongly believe that
+for Continuous Delivery to work
+`master` should be equal to production.
+
+An integration environment does not fit in
+the Continuous Delivery flow.
+
+But Mayfly doesn't really care about production,
+as long as the `master` branch is not changed
+outside Mayfly.
+--
+
+
+== !
+
+image::docker-logo.png[width=500]
+
+[NOTE.speaker]
+--
+So we use Docker as the light-weight runtime
+and packaging tool. Running applications
+on your local machine in the same way as
+on production.
+--
+
+
+== No integration environment?!
+
+image::testinproduction.jpg[]
+
+
+[NOTE.speaker]
+--
+* Accept that, if you want CD, certain things can only be tested in production
+* Mayfly uses mocks and stubbing to achieve PRO-like fidelity in user story environments
+--
+
+
+== There is more
+
+- SCM workflow
+- Story workflow
+- Why no integration environment
+- Life as a Docker image
+
+
+[NOTE.speaker]
+--
+And there is more to it than this, like
+
+- How do we handle the SCM flow?
+- Why do we think an integration environment
+  does not fit in the Continuous Delivery flow?
+
+For more in-depth info and discussions, ...
+--
+
+== Continuous Delivery Meetup
+
+http://meetup.com/Continuous-Delivery-Amsterdam
+
+http://www.meetup.com/Continuous-Delivery-Amsterdam/events/222957046/[Mayfly]
+
+Thursday, June 25, 2015 +
+18:00 to 22:00 +
+at bol.com
+
+[NOTE.speaker]
+--
+Join us at the Continuous Delivery meetup.
+
+Next Thursday at bol.com +
+Please register at meetup.com
+--

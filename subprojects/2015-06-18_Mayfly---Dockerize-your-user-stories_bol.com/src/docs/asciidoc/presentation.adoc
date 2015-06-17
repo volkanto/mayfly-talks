@@ -36,26 +36,7 @@ include::userstory.adoc[leveloffset=+1]
 include::mayfly.adoc[leveloffset=+1]
 include::dev-platform.adoc[leveloffset=+1]
 include::demo.adoc[leveloffset=+1]
-include::on-master.adoc[leveloffset=+1]
-
-=== Continuous Delivery Meetup
-
-http://meetup.com/Continuous-Delivery-Amsterdam
-
-http://www.meetup.com/Continuous-Delivery-Amsterdam/events/222957046/[Mayfly]
-
-Thursday, June 25, 2015 +
-18:00 to 22:00 +
-at bol.com
-
-[NOTE.speaker]
---
-For a more in-depth look on Mayfly,
-join us at the Continuous Delivery meetup.
-
-Next Thursday at bol.com +
-Please register at meetup.com
---
+include::short-version-of-extras.adoc[leveloffset=+1]
 
 
 == Current state
@@ -70,7 +51,7 @@ Please register at meetup.com
 
 == Future
 
-* DB support; oracle, mongodb, ...
+* DB support; Oracle, MongoDB, ...
 * Add more team services
 * Working towards production ready
 
