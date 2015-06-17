@@ -46,9 +46,9 @@ image::testinproduction.jpg[]
 == There is more
 
 - SCM workflow
-- Story workflow
-- Why no integration environment
-- Life as a Docker image
+- story workflow
+- why no integration environment
+- life as a Docker image
 
 
 [NOTE.speaker]

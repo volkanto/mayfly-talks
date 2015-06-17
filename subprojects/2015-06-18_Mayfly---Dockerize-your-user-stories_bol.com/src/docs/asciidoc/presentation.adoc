@@ -26,18 +26,18 @@ Maarten Dirkse <https://twitter.com/mdirkse[@mdirkse]>;Patrick van Dissel <https
 
 === Problems we had @ bol.com
 
-* Central, shared test environment
-* Multiple teams in single codebase
-* Unstable `master`
+* central, shared test environment
+* multiple teams in single codebase
+* unstable `master`
 
 Development process unsuited to continuous delivery
 
 [NOTE.speaker]
 --
 * What's the problem that Mayfly solves?
-** Central test environment
-** Multiple teams in single codebase
-** Unstable `master`: lots of poorly coordinated changes, merge conflicts
+** central test environment
+** multiple teams in single codebase
+** unstable `master`: lots of poorly coordinated changes, merge conflicts
 Developer velocity severely impacted by dev setup, unable to cope with dev org growth
 --
 
@@ -57,9 +57,9 @@ include::short-version-of-extras.adoc[leveloffset=+1]
 
 == Current state
 
-* Early development
-* Scope limited to simple services
-* Usage
+* early development
+* scope limited to simple services
+* usage
 ** 5 Mayfly services +
    (eating our own dogfood)
 ** 12 services of other teams
@@ -69,8 +69,8 @@ include::short-version-of-extras.adoc[leveloffset=+1]
 == Future
 
 * DB support; Oracle, MongoDB, ...
-* Add more services
-* Working towards production ready
+* add more services
+* working towards production ready
 
 
 === Open source
