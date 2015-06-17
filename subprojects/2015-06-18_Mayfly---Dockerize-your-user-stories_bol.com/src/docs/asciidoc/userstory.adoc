@@ -19,6 +19,8 @@ from todo to done on your agile board.
 |T |Testable
 |===
 
+https://en.wikipedia.org/wiki/INVEST_(mnemonic)
+
 [NOTE.speaker]
 --
 - *I*ndependent, The user story should be self-contained, in a way that there is no inherent dependency on another user story.
@@ -37,7 +39,7 @@ And therefor, ...
 
 == User story
 
-- can be a short lived feature branch
+- can be a short-lived feature branch
 - can have its own continuous integration
 - can be accepted independently
 - done == (ready for) production
@@ -46,7 +48,7 @@ And therefor, ...
 --
 a user story:
 
-- can be a short lived feature branch
+- can be a short-lived feature branch
 - can have its own continuous integration
 - can be accepted independently
 - and when it's done, it should be ready for production

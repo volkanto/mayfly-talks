@@ -24,8 +24,24 @@ Maarten Dirkse <https://twitter.com/mdirkse[@mdirkse]>;Patrick van Dissel <https
 
 == Dockerize your user stories
 
+=== Problems we had @ bol.com
 
-=== Mayfly
+* Central, shared test environment
+* Multiple teams in single codebase
+* Unstable `master`
+
+Development process unsuited to continuous delivery
+
+[NOTE.speaker]
+--
+* What's the problem that Mayfly solves?
+** Central test environment
+** Multiple teams in single codebase
+** Unstable `master`: lots of poorly coordinated changes, merge conflicts
+Developer velocity severely impacted by dev setup, unable to cope with dev org growth
+--
+
+=== The solution: Mayfly
 
 *user story*-centric +
 continuous delivery +
@@ -44,15 +60,16 @@ include::short-version-of-extras.adoc[leveloffset=+1]
 * Early development
 * Scope limited to simple services
 * Usage
-** 12 team services
 ** 5 Mayfly services +
    (eating our own dogfood)
+** 12 services of other teams
+
 
 
 == Future
 
 * DB support; Oracle, MongoDB, ...
-* Add more team services
+* Add more services
 * Working towards production ready
 
 

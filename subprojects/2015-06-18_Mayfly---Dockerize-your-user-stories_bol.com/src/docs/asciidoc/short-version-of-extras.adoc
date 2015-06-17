@@ -78,4 +78,6 @@ Join us at the Continuous Delivery meetup.
 
 Next Thursday at bol.com +
 Please register at meetup.com
+
+Invited all NL meetup groups that deal with CD
 --

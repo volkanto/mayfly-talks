@@ -4,8 +4,8 @@ Provides for each user story:
 
 - feature branch
 - continuous integration
-- environment
-- definition of done check
+- production-like environment
+- Definition of Done check
 
 [NOTE.speaker]
 --
