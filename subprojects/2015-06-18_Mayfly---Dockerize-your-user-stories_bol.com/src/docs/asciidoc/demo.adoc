@@ -5,4 +5,4 @@
 As a user, +
 When I start working on a story, +
 Then Mayfly provides me with ... +
-(link:{imagesdir}/20140724-mayfly-story-flow-demo.mp4[click for demo video])
+(link:{imagesdir}/20150617-mayfly-story-flow-demo.mp4[click for demo video])
