@@ -1,0 +1,57 @@
+= Flow of a story
+
+image::story-flow.png[height=500]
+
+== Start working on a story
+
+image::mayfly-open-story-flow.png[]
+
+[NOTE.speaker]
+--
+. Jira:
+** Create story
+** Story -> in-progress
+. Grimm creates for story:
+** feature branch
+** Jenkins pipeline
+** environment
+--
+
+== Make a change
+
+image::mayfly-make-change-flow.png[]
+
+[NOTE.speaker]
+--
+. Stash:
+** Sends notification to Mayfly
+** Sends notification to Jenkins
+. Mayfly:
+** fetches latest Definition of Done
+. Jenkins
+** Triggers pipeline for story
+** Pushed Docker image to registry
+** Sends notification to Mayfly about pipeline state
+. Mayfly, on pipeline state notification:
+** Triggers deployment of new version on story environment
+** Verifies latest Definition of Done state
+--
+
+== Resolve story
+
+image::mayfly-resolve-story-flow.png[]
+
+[NOTE.speaker]
+--
+. Jira:
+** Resolve story as fixed
+** Sends notification to Mayfly
+. Mayfly:
+** Verifies if Definition of Done is completely OK
+** If so,
+*** Merge change to `master`
+*** Deploy Docker image to production
+*** Story environment is removed
+*** Feature branch is removed
+*** Jenkins pipeline is removed
+--

@@ -1,0 +1,56 @@
+= User story flow
+
+image::story-flow.png[height=500]
+
+[NOTE.speaker]
+--
+User stories flow from the backlog to production, +
+from todo to done on your agile board.
+--
+
+== Characteristics
+
+|===
+|I |Independent
+|N |Negotiable
+|V |Valuable
+|E |Estimable
+|S |Small
+|T |Testable
+|===
+
+https://en.wikipedia.org/wiki/INVEST_(mnemonic)
+
+[NOTE.speaker]
+--
+- *I*ndependent, The user story should be self-contained, in a way that there is no inherent dependency on another user story.
+- *N*egotiable, User stories, up until they are part of an iteration, can always be changed and rewritten.
+- *V*aluable, A user story must deliver value to the end user.
+- *E*stimable, You must always be able to estimate the size of a user story.
+- *S*mall, User stories should not be so big as to become impossible to plan/task/prioritize with a certain level of certainty.
+- *T*estable, The user story or its related description must provide the necessary information to make test development possible
+
+You INVEST in each story to make it
+self-contained, valuable, small and testable
+so it can be developed in isolation
+
+And therefor, ...
+--
+
+== User story
+
+- can be a short-lived feature branch
+- can have its own continuous integration
+- can be accepted independently
+- done == (ready for) production
+
+[NOTE.speaker]
+--
+a user story:
+
+- can be a short-lived feature branch
+- can have its own continuous integration
+- can be accepted independently
+- and when it's done, it should be ready for production
+  or better yet, on production
+--

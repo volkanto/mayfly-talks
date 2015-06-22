@@ -1,0 +1,198 @@
+[data-transition=none]
+= Development platform
+
+[ditaa]
+----
++-------------+-----------------------------------------+
+|  3rd party  |              Mayfly                     |
+|    tools    |                                         |
+|             |                                         |
+|  +-------+  |                                         |
+|  | Jira  |  |                                         |
+|  +-------+  |                                         |
+|             |                                         |
+|             |                                         |
+|             |                                         |
+|             |                                         |
+|             |                                         |
+|  +-------+  |                                         |
+|  | Stash |  |                                         |
+|  +-------+  |                                         |
+|             |                                         |
+|  +-------+  |                                         |
+|  |Jenkins|  |                                         |
+|  +-------+  |                                         |
+|             |                                         |
+|             |                                         |
+|             |                                         |
++-------------+-----------------------------------------+
+|      Infrastructure                                   |
+|                                                       |
+|                                                       |
+|                                                       |
+|                                                       |
+|                                                       |
+|                                                       |
++-------------------------------------------------------+
+----
+
+[NOTE.speaker]
+--
+So our starting point is:
+
+- Jira, our agile board where our user stories reside
+- and Stash, our code repository
+
+From there, Mayfly is triggered. +
+And Mayfly talks to the infrastructure and back
+to the 3rd party tools.
+--
+
+
+[data-transition=none]
+== Development platform
+
+[ditaa]
+----
++-------------+-----------------------------------------+
+|  3rd party  |              Mayfly                     |
+|    tools    |                                         |
+|             |                                         |
+|  +-------+  |  +-----------+                          |
+|  | Jira  |  |  |   Freud   |                          |
+|  +-------+  |  +-----------+                          |
+|             |                                         |
+|             |  +-----------+    +-----------+         |
+|             |  | Devision  |    |   Grimm   |         |
+|             |  +-----------+    +-----------+         |
+|             |                                         |
+|  +-------+  |  +-----------+                          |
+|  | Stash |  |  |Ratatouille|                          |
+|  +-------+  |  +-----------+            +-----------+ |
+|             |                           | Heimdall  | |
+|  +-------+  |  +-----------+            +-----------+ |
+|  |Jenkins|  |  |   Mario   |                          |
+|  +-------+  |  +-----------+                          |
+|             |                   +-----------+         |
+|             |                   |   Maxis   |         |
+|             |                   +-----------+         |
++-------------+-----------------------------------------+
+|      Infrastructure                                   |
+|                                                       |
+|                                                       |
+|                                                       |
+|                                                       |
+|                                                       |
+|                                                       |
++-------------------------------------------------------+
+----
+
+[NOTE.speaker]
+--
+Mayfly is a development platform,
+consisting of:
+
+- Freud, to sent user story activities to Jira
+- Devision, Jira plugin to act on actions on user stories in Jira
+- Grimm, coordinates the building of stories
+- Ratatouille, the rat called git
+- Heimdall, decides if your story is production ready
+  based on the Definition of Done as code
+- Mario, lays the pipes for your story
+  based on the Build Pipeline as code
+- Maxis, creates your story environment
+  based on the Environment as code
+--
+
+
+[data-transition=none]
+== Development platform
+
+[ditaa]
+----
++-------------+-----------------------------------------+
+|  3rd party  |              Mayfly                     |
+|    tools    |                                         |
+|             |                                         |
+|  +-------+  |  +-----------+                          |
+|  | Jira  |  |  |   Freud   |                          |
+|  +-------+  |  +-----------+                          |
+|             |                                         |
+|             |  +-----------+    +-----------+         |
+|             |  | Devision  |    |   Grimm   |         |
+|             |  +-----------+    +-----------+         |
+|             |                                         |
+|  +-------+  |  +-----------+                          |
+|  | Stash |  |  |Ratatouille|                          |
+|  +-------+  |  +-----------+            +-----------+ |
+|             |                           | Heimdall  | |
+|  +-------+  |  +-----------+            +-----------+ |
+|  |Jenkins|  |  |   Mario   |                          |
+|  +-------+  |  +-----------+                          |
+|             |                   +-----------+         |
+|             |                   |   Maxis   |         |
+|             |                   +-----------+         |
++-------------+-----------------------------------------+
+|      Infrastructure                                   |
+|                                                       |
+|                                 +-----------+         |
+|                                 | Marathon  |         |
+|                                 |  Mesos    |         |
+|                                 |  Docker   |         |
+|                                 +-----------+         |
++-------------------------------------------------------+
+----
+
+[NOTE.speaker]
+--
+The infrastructure implementation we're currently
+using is based on Mesos with Docker containers,
+and Marathon on top of Mesos.
+--
+
+
+[data-transition=none]
+== Development platform
+
+[ditaa]
+----
++-------------+-----------------------------------------+
+|  3rd party  |              Mayfly                     |
+|    tools    |                                         |
+|             |                                         |
+|  +-------+  |  +-----------+                          |
+|  | Jira  +<-+--+   Freud   +<---------+               |
+|  +---+---+  |  +-----+-----+          |               |
+|      |      |                         |               |
+|      |      |  +-----------+    +-----+-----+         |
+|      +--=---+->+ Devision  +--->+   Grimm   |         |
+|             |  +-----------+    ++--+-+---+-+         |
+|             |                    |  | |   |           |
+|  +-------+  |  +-----------+     |  | |   |           |
+|  | Stash +<-+--+Ratatouille+<----+  | |   v           |
+|  +-------+  |  +-----------+        | | +-+---------+ |
+|             |                       | | | Heimdall  | |
+|  +-------+  |  +-----------+        | | +-----------+ |
+|  |Jenkins+<-+--+   Mario   +<-------+ |               |
+|  +-------+  |  +-----------+          v               |
+|             |                   +-----+-----+         |
+|             |                   |   Maxis   |         |
+|             |                   +-----+-----+         |
++-------------+-------------------------+---------------+
+|      Infrastructure                   |               |
+|                                       v               |
+|                                 +-----+-----+         |
+|                                 | Marathon  |         |
+|                                 |  Mesos    |         |
+|                                 |  Docker   |         |
+|                                 +-----------+         |
++-------------------------------------------------------+
+----
+
+[NOTE.speaker]
+--
+With all the relations, it looks like this. +
+The core entity of Mayfly is the user story. +
+Which is overly clear by all relations to
+and from Grimm, our user stories service.
+--

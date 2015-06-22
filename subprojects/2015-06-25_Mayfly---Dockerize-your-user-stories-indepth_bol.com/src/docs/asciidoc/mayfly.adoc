@@ -1,0 +1,43 @@
+= Mayfly
+
+Provides for each user story:
+
+- feature branch
+- continuous integration
+- production-like environment
+- Definition of Done check
+
+[NOTE.speaker]
+--
+So that's what Mayfly provides :)
+
+For each user story, you get:
+
+- a feature branch on the application repository
+- continuous integration on the feature branch
+- an environment for the user story based on the feature branch
+- and a verification if the user story is
+  production ready, according to the Definition of Done
+--
+
+== Everything-as-code
+
+- build pipelines as code
+- environments as code
+- Definition of Done as code
+- tests as code
+
+[NOTE.speaker]
+--
+We do this by describing everything as code:
+
+- we use the Jenkins JobDSL to
+  configure the build pipeline as code
+- we configure the environment as code
+  in a deployment descriptor file
+- we describe the Definition of Done as code
+- and of course, you write tests for your code
+
+All these files are stored in the code repository,
+so it is always in-sync with the code it is for.
+--
