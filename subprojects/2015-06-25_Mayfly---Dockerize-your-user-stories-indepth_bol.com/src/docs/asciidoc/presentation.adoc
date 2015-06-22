@@ -18,13 +18,11 @@ of the html-file
 :sources: ../..
 :hide-uri-scheme:
 
-= Mayfly
+= Dockerize user stories with Mayfly
 Maarten Dirkse <https://twitter.com/mdirkse[@mdirkse]>;Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
 
 
-== Dockerize your user stories
-
-=== Problems we had @ bol.com
+== Problems we had @ bol.com
 
 * central, shared test environment
 * multiple teams in single codebase
@@ -41,6 +39,7 @@ Development process unsuited to continuous delivery
 Developer velocity severely impacted by dev setup, unable to cope with dev org growth
 --
 
+
 === The solution: Mayfly
 
 *user story*-centric +
@@ -52,7 +51,10 @@ include::userstory.adoc[leveloffset=+1]
 include::mayfly.adoc[leveloffset=+1]
 include::dev-platform.adoc[leveloffset=+1]
 include::demo.adoc[leveloffset=+1]
-include::short-version-of-extras.adoc[leveloffset=+1]
+include::extra-storyflow.adoc[leveloffset=+1]
+include::extra-scmflow.adoc[leveloffset=+1]
+include::extra-rip-acc.adoc[leveloffset=+1]
+include::extra-dockerimageflow.adoc[leveloffset=+1]
 
 
 == Current state
@@ -63,7 +65,6 @@ include::short-version-of-extras.adoc[leveloffset=+1]
 ** 5 Mayfly services +
    (eating our own dogfood)
 ** 12 services of other teams
-
 
 
 == Future
@@ -92,6 +93,7 @@ Thursday, Juli 9, 2015 +
 16:30 to 20:00 +
 at bol.com
 
+
 == Thank you
 
 https://mayflycd.github.io/mayfly-talks[Slides] +
@@ -101,10 +103,3 @@ http://bolcom.github.io
 
 Maarten Dirkse https://twitter.com/mdirkse[@mdirkse] +
 Patrick van Dissel https://twitter.com/pvdissel[@pvdissel]
-
-
-== Extra
-
-include::extra-storyflow.adoc[leveloffset=+1]
-include::extra-scmflow.adoc[leveloffset=+1]
-include::extra-rip-acc.adoc[leveloffset=+1]

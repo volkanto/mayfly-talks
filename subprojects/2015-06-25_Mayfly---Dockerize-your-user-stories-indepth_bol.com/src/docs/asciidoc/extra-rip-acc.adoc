@@ -1,4 +1,23 @@
-= But I need an integration testing environment!
+= `master` == production
+
+[NOTE.speaker]
+--
+Your users can only enjoy the new feature
+if it's on production.
+
+So we strongly believe that
+for Continuous Delivery to work
+`master` should be equal to production.
+
+An integration environment does not fit in
+the Continuous Delivery flow.
+
+But Mayfly doesn't really care about production,
+as long as the `master` branch is not changed
+outside Mayfly.
+--
+
+== But I need an integration testing environment!
 [%step]
 * No, you don't
 

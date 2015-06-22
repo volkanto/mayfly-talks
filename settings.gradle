@@ -1,3 +1,4 @@
+include '2015-06-25_Mayfly---Dockerize-your-user-stories-indepth_bol.com'
 include '2015-06-18_Mayfly---Dockerize-your-user-stories_bol.com'
 
 rootProject.name = 'mayfly-talks'

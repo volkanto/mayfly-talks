@@ -1,0 +1,55 @@
+= Flow of a Docker image
+
+image::docker-logo.png[width=500]
+
+[NOTE.speaker]
+--
+So we use Docker as the light-weight runtime
+and packaging tool. Running applications
+on your local machine in the same way as
+on production.
+--
+
+[data-transition=none]
+== Build && Push
+
+image::mayfly-make-change-flow.png[]
+
+[NOTE.speaker]
+--
+The build pipeline describes how and when
+the Docker image is build. This is completely
+left to the project to take care off.
+
+For easy usage we've created a Gradle plugin
+that builds and pushed the Docker image for
+our services. It uses a Docker image
+specific to our services architecture, based
+on our internal, soon to be open-sourced,
+services framework "Backspin".
+--
+
+[data-transition=fade-in slide-out]
+== Deploy
+
+image::mayfly-make-change-flow.png[]
+
+[NOTE.speaker]
+--
+To deploy the image, a message to Maxis
+must be sent. On which Maxis takes care of
+deploying it into the story environment.
+--
+
+== Deploy to Production
+
+image::mayfly-resolve-story-flow.png[]
+
+[NOTE.speaker]
+--
+When a story is resolved, we already have the
+Docker image from the story environment.
+So Grimm just sents a message to Maxis to
+deploy the image from the story environment
+to production.
+--
