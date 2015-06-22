@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Maarten Dirkse"><title>Dockerize user stories with Mayfly</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="theme/bol.com-v1/bol.com.css" id="theme"><link href="highlight.js/styles/solarized_light.css" title="default syntax highlighting" rel="stylesheet"><link href="highlight.js/styles/solarized_dark.css" title="alternative syntax highlighting" rel="alternate stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><div id="header"><h1>Dockerize user stories with Mayfly</h1><div class="details"><span class="author" id="author">Maarten Dirkse</span><br><span class="email" id="email"><a href="https://twitter.com/mdirkse">@mdirkse</a></span><br><span class="author" id="author2">Patrick van Dissel</span><br><span class="email" id="email2"><a href="https://twitter.com/pvdissel">@pvdissel</a></span></div></div></section><section><section id="_problems_we_had_bol_com"><h2>Problems we had @ bol.com</h2><div class="ulist"><ul><li><p>central, shared test environment</p></li><li><p>multiple teams in single codebase</p></li><li><p>unstable <code>master</code></p></li></ul></div><div class="paragraph"><p>Development process unsuited to continuous delivery</p></div><aside class="notes"><div class="ulist"><ul><li><p>What&#8217;s the problem that Mayfly solves?</p><div class="ulist"><ul><li><p>central test environment</p></li><li><p>multiple teams in single codebase</p></li><li><p>unstable <code>master</code>: lots of poorly coordinated changes, merge conflicts
+Developer velocity severely impacted by dev setup, unable to cope with dev org growth</p></li></ul></div></li></ul></div></aside></section><section id="_the_solution_mayfly"><h2>The solution: Mayfly</h2><div class="paragraph"><p><strong>user story</strong>-centric<br>
+continuous delivery<br>
+<strong>development</strong> platform<br>
+using Docker</p></div></section></section>
+<section><section id="_user_story_flow"><h2>User story flow</h2><div class="imageblock" style=""><div class="content"><img src="./images/story-flow.png" alt="story flow" height="500"></div></div><aside class="notes"><div class="paragraph"><p>User stories flow from the backlog to production,<br>
+from todo to done on your agile board.</p></div></aside></section><section id="_characteristics"><h2>Characteristics</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">I</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Independent</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Negotiable</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">V</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Valuable</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">E</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Estimable</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">S</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Small</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">T</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Testable</p></td></tr></tbody></table>
+<div class="paragraph"><p><a href="https://en.wikipedia.org/wiki/INVEST_(mnemonic" class="bare">en.wikipedia.org/wiki/INVEST_(mnemonic</a>)</p></div>
+<aside class="notes"><div class="ulist"><ul><li><p>*I*ndependent, The user story should be self-contained, in a way that there is no inherent dependency on another user story.</p></li><li><p>*N*egotiable, User stories, up until they are part of an iteration, can always be changed and rewritten.</p></li><li><p>*V*aluable, A user story must deliver value to the end user.</p></li><li><p>*E*stimable, You must always be able to estimate the size of a user story.</p></li><li><p>*S*mall, User stories should not be so big as to become impossible to plan/task/prioritize with a certain level of certainty.</p></li><li><p>*T*estable, The user story or its related description must provide the necessary information to make test development possible</p></li></ul></div>
+<div class="paragraph"><p>You INVEST in each story to make it
+self-contained, valuable, small and testable
+so it can be developed in isolation</p></div>
+<div class="paragraph"><p>And therefor, &#8230;&#8203;</p></div></aside></section><section id="_user_story"><h2>User story</h2><div class="ulist"><ul><li><p>can be a short-lived feature branch</p></li><li><p>can have its own continuous integration</p></li><li><p>can be accepted independently</p></li><li><p>done == (ready for) production</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>a user story:</p></div>
+<div class="ulist"><ul><li><p>can be a short-lived feature branch</p></li><li><p>can have its own continuous integration</p></li><li><p>can be accepted independently</p></li><li><p>and when it&#8217;s done, it should be ready for production
+or better yet, on production</p></li></ul></div></aside></section></section>
+<section><section id="_mayfly"><h2>Mayfly</h2><div class="paragraph"><p>Provides for each user story:</p></div><div class="ulist"><ul><li><p>feature branch</p></li><li><p>continuous integration</p></li><li><p>production-like environment</p></li><li><p>Definition of Done check</p></li></ul></div><aside class="notes"><div class="paragraph"><p>So that&#8217;s what Mayfly provides :)</p></div>
+<div class="paragraph"><p>For each user story, you get:</p></div>
+<div class="ulist"><ul><li><p>a feature branch on the application repository</p></li><li><p>continuous integration on the feature branch</p></li><li><p>an environment for the user story based on the feature branch</p></li><li><p>and a verification if the user story is
+production ready, according to the Definition of Done</p></li></ul></div></aside></section><section id="_everything_as_code"><h2>Everything-as-code</h2><div class="ulist"><ul><li><p>build pipelines as code</p></li><li><p>environments as code</p></li><li><p>Definition of Done as code</p></li><li><p>tests as code</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>We do this by describing everything as code:</p></div>
+<div class="ulist"><ul><li><p>we use the Jenkins JobDSL to
+configure the build pipeline as code</p></li><li><p>we configure the environment as code
+in a deployment descriptor file</p></li><li><p>we describe the Definition of Done as code</p></li><li><p>and of course, you write tests for your code</p></li></ul></div>
+<div class="paragraph"><p>All these files are stored in the code repository,
+so it is always in-sync with the code it is for.</p></div></aside></section></section>
+<section><section id="_development_platform" data-transition="none"><h2>Development platform</h2><div class="imageblock" style=""><div class="content"><img src="./images/diag-fe7a8bb07a05eff1480f9aad9b3ceba7.png" alt="Diagram" width="610" height="490"></div></div><aside class="notes"><div class="paragraph"><p>So our starting point is:</p></div>
+<div class="ulist"><ul><li><p>Jira, our agile board where our user stories reside</p></li><li><p>and Stash, our code repository</p></li></ul></div>
+<div class="paragraph"><p>From there, Mayfly is triggered.<br>
+And Mayfly talks to the infrastructure and back
+to the 3rd party tools.</p></div></aside></section><section id="_development_platform_2" data-transition="none"><h2>Development platform</h2><div class="imageblock" style=""><div class="content"><img src="./images/diag-6afc20a90302795a0667921bc4b75adb.png" alt="Diagram" width="610" height="490"></div></div>
+<aside class="notes"><div class="paragraph"><p>Mayfly is a development platform,
+consisting of:</p></div>
+<div class="ulist"><ul><li><p>Freud, to sent user story activities to Jira</p></li><li><p>Devision, Jira plugin to act on actions on user stories in Jira</p></li><li><p>Grimm, coordinates the building of stories</p></li><li><p>Ratatouille, the rat called git</p></li><li><p>Heimdall, decides if your story is production ready
+based on the Definition of Done as code</p></li><li><p>Mario, lays the pipes for your story
+based on the Build Pipeline as code</p></li><li><p>Maxis, creates your story environment
+based on the Environment as code</p></li></ul></div></aside></section><section id="_development_platform_3" data-transition="none"><h2>Development platform</h2><div class="imageblock" style=""><div class="content"><img src="./images/diag-31239f766a7632e91139df724e811008.png" alt="Diagram" width="610" height="490"></div></div>
+<aside class="notes"><div class="paragraph"><p>The infrastructure implementation we&#8217;re currently
+using is based on Mesos with Docker containers,
+and Marathon on top of Mesos.</p></div></aside></section><section id="_development_platform_4" data-transition="none"><h2>Development platform</h2><div class="imageblock" style=""><div class="content"><img src="./images/diag-e60a4851682669d57ddadf76969c5e79.png" alt="Diagram" width="610" height="490"></div></div>
+<aside class="notes"><div class="paragraph"><p>With all the relations, it looks like this.<br>
+The core entity of Mayfly is the user story.<br>
+Which is overly clear by all relations to
+and from Grimm, our user stories service.</p></div></aside></section></section>
+<section><section id="_demo"><h2>Demo</h2></section><section id="_alternative_demo"><h2>Alternative demo</h2><div class="paragraph"><p>As a user,<br>
+When I start working on a story,<br>
+Then Mayfly provides me with &#8230;&#8203;<br>
+(<a href="./images/20150617-mayfly-story-flow-demo.mp4">click for demo video</a>)</p></div></section></section>
+<section><section id="_flow_of_a_story"><h2>Flow of a story</h2><div class="imageblock" style=""><div class="content"><img src="./images/story-flow.png" alt="story flow" height="500"></div></div></section><section id="_start_working_on_a_story"><h2>Start working on a story</h2><div class="imageblock" style=""><div class="content"><img src="./images/mayfly-open-story-flow.png" alt="mayfly open story flow"></div></div>
+<aside class="notes"><div class="olist arabic"><ol class="arabic"><li><p>Jira:</p><div class="ulist"><ul><li><p>Create story</p></li><li><p>Story &#8594; in-progress</p></li></ul></div></li><li><p>Grimm creates for story:</p><div class="ulist"><ul><li><p>feature branch</p></li><li><p>Jenkins pipeline</p></li><li><p>environment</p></li></ul></div></li></ol></div></aside></section><section id="_make_a_change"><h2>Make a change</h2><div class="imageblock" style=""><div class="content"><img src="./images/mayfly-make-change-flow.png" alt="mayfly make change flow"></div></div>
+<aside class="notes"><div class="olist arabic"><ol class="arabic"><li><p>Stash:</p><div class="ulist"><ul><li><p>Sends notification to Mayfly</p></li><li><p>Sends notification to Jenkins</p></li></ul></div></li><li><p>Mayfly:</p><div class="ulist"><ul><li><p>fetches latest Definition of Done</p></li></ul></div></li><li><p>Jenkins</p><div class="ulist"><ul><li><p>Triggers pipeline for story</p></li><li><p>Pushed Docker image to registry</p></li><li><p>Sends notification to Mayfly about pipeline state</p></li></ul></div></li><li><p>Mayfly, on pipeline state notification:</p><div class="ulist"><ul><li><p>Triggers deployment of new version on story environment</p></li><li><p>Verifies latest Definition of Done state</p></li></ul></div></li></ol></div></aside></section><section id="_resolve_story"><h2>Resolve story</h2><div class="imageblock" style=""><div class="content"><img src="./images/mayfly-resolve-story-flow.png" alt="mayfly resolve story flow"></div></div>
+<aside class="notes"><div class="olist arabic"><ol class="arabic"><li><p>Jira:</p><div class="ulist"><ul><li><p>Resolve story as fixed</p></li><li><p>Sends notification to Mayfly</p></li></ul></div></li><li><p>Mayfly:</p><div class="ulist"><ul><li><p>Verifies if Definition of Done is completely OK</p></li><li><p>If so,</p><div class="ulist"><ul><li><p>Merge change to <code>master</code></p></li><li><p>Deploy Docker image to production</p></li><li><p>Story environment is removed</p></li><li><p>Feature branch is removed</p></li><li><p>Jenkins pipeline is removed</p></li></ul></div></li></ul></div></li></ol></div></aside></section></section>
+<section><section id="_but_what_about_conflicts_on_code_master_code"><h2>But what about conflicts on <code>master</code>?</h2><div class="ulist"><ul><li class="fragment"><p>That never happens (no, really)</p></li></ul></div></section><section id="_automated_scm_workflow" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow1.png" alt="scmflow1"></div></div></section><section id="_automated_scm_workflow_2" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow2.png" alt="scmflow2"></div></div></section><section id="_automated_scm_workflow_3" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow3.png" alt="scmflow3"></div></div></section><section id="_automated_scm_workflow_4" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow4.png" alt="scmflow4"></div></div></section><section id="_automated_scm_workflow_5" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow5.png" alt="scmflow5"></div></div></section><section id="_automated_scm_workflow_6" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow6.png" alt="scmflow6"></div></div></section><section id="_automated_scm_workflow_7" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow7.png" alt="scmflow7"></div></div></section><section id="_automated_scm_workflow_8" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow8.png" alt="scmflow8"></div></div></section><section id="_automated_scm_workflow_9" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow9.png" alt="scmflow9"></div></div></section><section id="_automated_scm_workflow_10" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow10.png" alt="scmflow10"></div></div></section></section>
+<section><section id="__code_master_code_production"><h2><code>master</code> == production</h2><aside class="notes"><div class="paragraph"><p>Your users can only enjoy the new feature
+if it&#8217;s on production.</p></div>
+<div class="paragraph"><p>So we strongly believe that
+for Continuous Delivery to work
+<code>master</code> should be equal to production.</p></div>
+<div class="paragraph"><p>An integration environment does not fit in
+the Continuous Delivery flow.</p></div>
+<div class="paragraph"><p>But Mayfly doesn&#8217;t really care about production,
+as long as the <code>master</code> branch is not changed
+outside Mayfly.</p></div></aside></section><section id="_but_i_need_an_integration_testing_environment"><h2>But I need an integration testing environment!</h2><div class="ulist"><ul><li class="fragment"><p>No, you don&#8217;t</p></li></ul></div></section><section id="_old_style_development" data-transition="none"><h2>Old style development</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc1.png" alt="ripacc1"></div></div></section><section id="_old_style_development_2" data-transition="none"><h2>Old style development</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc2.png" alt="ripacc2"></div></div></section><section id="_old_style_development_3" data-transition="none"><h2>Old style development</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc3.png" alt="ripacc3"></div></div></section><section id="_integration_testing" data-transition="none"><h2>Integration testing</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc4.png" alt="ripacc4"></div></div></section><section id="_continuous_delivery" data-transition="none"><h2>Continuous delivery</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc5.png" alt="ripacc5"></div></div></section><section id="_integration_test_time" data-transition="none"><h2>Integration test time!</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc6.png" alt="ripacc6"></div></div></section><section id="__sigh" data-transition="none"><h2>"&#8230;&#8203;.. &lt;sigh&gt;"</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc7.png" alt="ripacc7"></div></div></section><section id="_get_rid_of_the_version_lock" data-transition="none"><h2>Get rid of the version lock</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc8.png" alt="ripacc8"></div></div></section><section id="_no_integration_environment"><h2>No integration environment?!</h2><div class="imageblock" style=""><div class="content"><img src="./images/testinproduction.jpg" alt="testinproduction"></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Accept that, if you want CD, certain things can only be tested in production</p></li><li><p>Mayfly uses mocks and stubbing to achieve PRO-like fidelity in user story environments</p></li></ul></div></aside></section></section>
+<section><section id="_flow_of_a_docker_image"><h2>Flow of a Docker image</h2><div class="imageblock" style=""><div class="content"><img src="./images/docker-logo.png" alt="docker logo" width="500"></div></div><aside class="notes"><div class="paragraph"><p>So we use Docker as the light-weight runtime
+and packaging tool. Running applications
+on your local machine in the same way as
+on production.</p></div></aside></section><section id="_build_push" data-transition="none"><h2>Build &amp;&amp; Push</h2><div class="imageblock" style=""><div class="content"><img src="./images/mayfly-make-change-flow.png" alt="mayfly make change flow"></div></div>
+<aside class="notes"><div class="paragraph"><p>The build pipeline describes how and when
+the Docker image is build. This is completely
+left to the project to take care off.</p></div>
+<div class="paragraph"><p>For easy usage we&#8217;ve created a Gradle plugin
+that builds and pushed the Docker image for
+our services. It uses a Docker image
+specific to our services architecture, based
+on our internal, soon to be open-sourced,
+services framework "Backspin".</p></div></aside></section><section id="_deploy" data-transition="fade-in slide-out"><h2>Deploy</h2><div class="imageblock" style=""><div class="content"><img src="./images/mayfly-make-change-flow.png" alt="mayfly make change flow"></div></div>
+<aside class="notes"><div class="paragraph"><p>To deploy the image, a message to Maxis
+must be sent. On which Maxis takes care of
+deploying it into the story environment.</p></div></aside></section><section id="_deploy_to_production"><h2>Deploy to Production</h2><div class="imageblock" style=""><div class="content"><img src="./images/mayfly-resolve-story-flow.png" alt="mayfly resolve story flow"></div></div>
+<aside class="notes"><div class="paragraph"><p>When a story is resolved, we already have the
+Docker image from the story environment.
+So Grimm just sents a message to Maxis to
+deploy the image from the story environment
+to production.</p></div></aside></section></section>
+<section id="_current_state"><h2>Current state</h2><div class="ulist"><ul><li><p>early development</p></li><li><p>scope limited to simple services</p></li><li><p>usage</p><div class="ulist"><ul><li><p>5 Mayfly services<br>
+(eating our own dogfood)</p></li><li><p>12 services of other teams</p></li></ul></div></li></ul></div></section>
+<section><section id="_future"><h2>Future</h2><div class="ulist"><ul><li><p>DB support; Oracle, MongoDB, &#8230;&#8203;</p></li><li><p>add more services</p></li><li><p>working towards production ready</p></li></ul></div></section><section id="_open_source"><h2>Open source</h2><div class="paragraph"><p><a href="http://mayfly.cd" class="bare">mayfly.cd</a><br>
+<a href="http://bolcom.github.io" class="bare">bolcom.github.io</a></p></div></section></section>
+<section><section id="_we_re_hiring"><h2>We&#8217;re hiring!</h2><div class="paragraph"><p><a href="https://banen.bol.com" class="bare">banen.bol.com</a></p></div></section><section id="_beer_tech_and_bbq_event"><h2>Beer, tech and BBQ event</h2><div class="paragraph"><p><a href="https://banen.bol.com/events/" class="bare">banen.bol.com/events/</a></p></div>
+<div class="paragraph"><p>Thursday, Juli 9, 2015<br>
+16:30 to 20:00<br>
+at bol.com</p></div></section></section>
+<section id="_thank_you"><h2>Thank you</h2><div class="paragraph"><p><a href="https://mayflycd.github.io/mayfly-talks">Slides</a><br>
+<a href="http://mayfly.cd" class="bare">mayfly.cd</a><br>
+<a href="http://bolcom.github.io" class="bare">bolcom.github.io</a></p></div>
+<div class="paragraph"><p>Maarten Dirkse <a href="https://twitter.com/mdirkse">@mdirkse</a><br>
+Patrick van Dissel <a href="https://twitter.com/pvdissel">@pvdissel</a></p></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script type="text/javascript">// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, blood, league, moon, night, serif, simple, sky, solarized, white)
+  theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'linear',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'default',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'reveal.js/plugin/math/math.js', async: true}
+  ]
+});</script></body></html>
