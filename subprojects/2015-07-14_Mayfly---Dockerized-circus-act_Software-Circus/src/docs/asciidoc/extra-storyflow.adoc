@@ -1,0 +1,25 @@
+= Flow of a story
+
+image::story-flow.png[height=500]
+
+== Start working on a story
+
+* Jira -> "In progress"
+* Create branch
+* Create build pipeline
+* Create environment (Mesos + Marathon)
+* Deploy copy of `master` Docker image
+
+== Make a change (repeat)
+
+* Build pipeline builds change as Docker image
+* New image is deployed on user story environment
+* DoD checks are updated
+
+== Resolve story
+
+* Jira -> "Done" (if DoD passes!)
+* Feature branch is merged to `master` (never any conflicts)
+* Environment is cleaned up
+* Last user story Docker image is deployed to production
+

@@ -1,0 +1,64 @@
+= `master` == production
+
+[NOTE.speaker]
+--
+Your users can only enjoy the new feature
+if it's on production.
+
+So we strongly believe that
+for Continuous Delivery to work
+`master` should be equal to production.
+
+An integration environment does not fit in
+the Continuous Delivery flow.
+
+But Mayfly doesn't really care about production,
+as long as the `master` branch is not changed
+outside Mayfly.
+--
+
+== But I need an integration testing environment!
+[%step]
+* No, you don't
+
+[data-transition=none]
+== Old style development
+image::rip-acc/ripacc1.png[]
+
+[data-transition=none]
+== Old style development
+image::rip-acc/ripacc2.png[]
+
+[data-transition=none]
+== Old style development
+image::rip-acc/ripacc3.png[]
+
+[data-transition=none]
+== Integration testing
+image::rip-acc/ripacc4.png[]
+
+[data-transition=none]
+== Continuous delivery
+image::rip-acc/ripacc5.png[]
+
+[data-transition=none]
+== Integration test time!
+image::rip-acc/ripacc6.png[]
+
+[data-transition=none]
+== "..... <sigh>"
+image::rip-acc/ripacc7.png[]
+
+[data-transition=none]
+== Get rid of the version lock
+image::rip-acc/ripacc8.png[]
+
+== No integration environment?!
+image::testinproduction.jpg[]
+
+
+[NOTE.speaker]
+--
+* Accept that, if you want CD, certain things can only be tested in production
+* Mayfly uses mocks and stubbing to achieve PRO-like fidelity in user story environments
+--
