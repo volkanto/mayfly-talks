@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Maarten Dirkse"><title>Dockerized circus act with Mayfly</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="theme/bol.com-v1/bol.com.css" id="theme"><link href="highlight.js/styles/solarized_light.css" title="default syntax highlighting" rel="stylesheet"><link href="highlight.js/styles/solarized_dark.css" title="alternative syntax highlighting" rel="alternate stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><div id="header"><h1>Dockerized circus act with Mayfly</h1><div class="details"><span class="author" id="author">Maarten Dirkse</span><br><span class="email" id="email"><a href="https://twitter.com/mdirkse">@mdirkse</a></span><br><span class="author" id="author2">Patrick van Dissel</span><br><span class="email" id="email2"><a href="https://twitter.com/pvdissel">@pvdissel</a></span></div></div></section><section id="_bol_com_context"><h2>bol.com context</h2><div class="ulist"><ul><li><p>scrum teams, 5-8 people</p></li><li><p>130 services &amp; apps (SOA, the good kind)</p></li><li><p>2 week sprints</p></li></ul></div></section>
+<section><section id="_problems_we_had_bol_com"><h2>Problems we had @ bol.com</h2><div class="ulist"><ul><li><p>central, shared test environment</p></li><li><p>&gt;1 teams in single codebase (unstable <code>master</code>)</p></li><li><p>giant release every 4 weeks</p></li></ul></div><div class="paragraph"><p>Development process unsuited to continuous delivery</p></div><aside class="notes"><div class="ulist"><ul><li><p>What&#8217;s the problem that Mayfly solves?</p><div class="ulist"><ul><li><p>central test environment</p></li><li><p>multiple teams in single codebase</p></li><li><p>superbol
+Developer velocity severely impacted by dev setup, unable to cope with dev org growth</p></li></ul></div></li></ul></div></aside></section><section id="_the_solution_mayfly"><h2>The solution: Mayfly</h2><div class="paragraph"><p><strong>user story</strong>-centric<br>
+continuous delivery<br>
+<strong>development</strong> platform<br>
+using Docker</p></div></section></section>
+<section><section id="_user_story_flow"><h2>User story flow</h2><div class="imageblock" style=""><div class="content"><img src="./images/story-flow.png" alt="story flow" height="500"></div></div><aside class="notes"><div class="paragraph"><p>User stories flow from the backlog to production,<br>
+from todo to done on your agile board.</p></div></aside></section><section id="_user_story"><h2>User story</h2><div class="ulist"><ul><li><p>has a short-lived feature branch</p></li><li><p>has its own continuous integration</p></li><li><p>can be accepted independently</p></li><li><p>done == (ready for) production</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>a user story:</p></div>
+<div class="ulist"><ul><li><p>can be a short-lived feature branch</p></li><li><p>can have its own continuous integration</p></li><li><p>can be accepted independently</p></li><li><p>and when it&#8217;s done, it should be ready for production
+or better yet, on production</p></li></ul></div></aside></section></section>
+<section><section id="_mayfly"><h2>Mayfly</h2><div class="paragraph"><p>Provides each user story with:</p></div><div class="ulist"><ul><li><p>feature branch</p></li><li><p>continuous integration</p></li><li><p>production-like environment</p></li><li><p>Definition-of-Done check</p></li></ul></div><aside class="notes"><div class="paragraph"><p>So that&#8217;s what Mayfly provides :)</p></div>
+<div class="paragraph"><p>For each user story, you get:</p></div>
+<div class="ulist"><ul><li><p>a feature branch on the application repository</p></li><li><p>continuous integration on the feature branch</p></li><li><p>an environment for the user story based on the feature branch</p></li><li><p>and a verification if the user story is
+production ready, according to the Definition of Done</p></li></ul></div></aside></section><section id="_everything_as_code"><h2>Everything-as-code</h2><div class="ulist"><ul><li><p>build pipelines as code</p></li><li><p>environments as code</p></li><li><p>Definition-of-Done as code</p></li><li><p>tests as code</p></li></ul></div>
+<div class="paragraph"><p>All code is stored in the app repo</p></div>
+<aside class="notes"><div class="paragraph"><p>We do this by describing everything as code:</p></div>
+<div class="ulist"><ul><li><p>we use the Jenkins JobDSL to
+configure the build pipeline as code</p></li><li><p>we configure the environment as code
+in a deployment descriptor file</p></li><li><p>we describe the Definition of Done as code</p></li><li><p>and of course, you write tests for your code</p></li></ul></div>
+<div class="paragraph"><p>All these files are stored in the code repository,
+so it is always in-sync with the code it is for.</p></div></aside></section></section>
+<section><section id="_flow_of_a_story"><h2>Flow of a story</h2><div class="imageblock" style=""><div class="content"><img src="./images/story-flow.png" alt="story flow" height="500"></div></div></section><section id="_start_working_on_a_story"><h2>Start working on a story</h2><div class="ulist"><ul><li><p>Jira &#8594; "In progress"</p></li><li><p>Create branch</p></li><li><p>Create build pipeline</p></li><li><p>Create environment (Mesos + Marathon)</p></li><li><p>Deploy copy of <code>master</code> Docker image</p></li></ul></div></section><section id="_make_a_change_repeat"><h2>Make a change (repeat)</h2><div class="ulist"><ul><li><p>Build pipeline builds change as Docker image</p></li><li><p>New image is deployed on user story environment</p></li><li><p>DoD checks are updated</p></li></ul></div></section><section id="_resolve_story"><h2>Resolve story</h2><div class="ulist"><ul><li><p>Jira &#8594; "Done" (if DoD passes!)</p></li><li><p>Feature branch is merged to <code>master</code> (never any conflicts)</p></li><li><p>Environment is cleaned up</p></li><li><p>Last user story Docker image is deployed to production</p></li></ul></div></section></section>
+<section><section id="__code_master_code_production"><h2><code>master</code> == production</h2><aside class="notes"><div class="paragraph"><p>Your users can only enjoy the new feature
+if it&#8217;s on production.</p></div>
+<div class="paragraph"><p>So we strongly believe that
+for Continuous Delivery to work
+<code>master</code> should be equal to production.</p></div>
+<div class="paragraph"><p>An integration environment does not fit in
+the Continuous Delivery flow.</p></div>
+<div class="paragraph"><p>But Mayfly doesn&#8217;t really care about production,
+as long as the <code>master</code> branch is not changed
+outside Mayfly.</p></div></aside></section><section id="_but_i_need_an_integration_testing_environment"><h2>But I need an integration testing environment!</h2><div class="ulist"><ul><li class="fragment"><p>No, you don&#8217;t</p></li></ul></div></section><section id="_old_style_development" data-transition="none"><h2>Old style development</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc1.png" alt="ripacc1"></div></div></section><section id="_old_style_development_2" data-transition="none"><h2>Old style development</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc2.png" alt="ripacc2"></div></div></section><section id="_old_style_development_3" data-transition="none"><h2>Old style development</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc3.png" alt="ripacc3"></div></div></section><section id="_integration_testing" data-transition="none"><h2>Integration testing</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc4.png" alt="ripacc4"></div></div></section><section id="_continuous_delivery" data-transition="none"><h2>Continuous delivery</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc5.png" alt="ripacc5"></div></div></section><section id="_integration_test_time" data-transition="none"><h2>Integration test time!</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc6.png" alt="ripacc6"></div></div></section><section id="__sigh" data-transition="none"><h2>"&#8230;&#8203;.. &lt;sigh&gt;"</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc7.png" alt="ripacc7"></div></div></section><section id="_get_rid_of_the_version_lock" data-transition="none"><h2>Get rid of the version lock</h2><div class="imageblock" style=""><div class="content"><img src="./images/rip-acc/ripacc8.png" alt="ripacc8"></div></div></section><section id="_no_integration_environment"><h2>No integration environment?!</h2><div class="imageblock" style=""><div class="content"><img src="./images/testinproduction.jpg" alt="testinproduction"></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Accept that, if you want CD, certain things can only be tested in production</p></li><li><p>Mayfly uses mocks and stubbing to achieve PRO-like fidelity in user story environments</p></li></ul></div></aside></section></section>
+<section id="_current_state"><h2>Current state</h2><div class="ulist"><ul><li><p>early development</p></li><li><p>scope limited to simple services</p></li><li><p>usage</p><div class="ulist"><ul><li><p>5 Mayfly services<br>
+(eating our own dogfood)</p></li><li><p>12 services of other teams</p></li></ul></div></li></ul></div></section>
+<section><section id="_future"><h2>Future</h2><div class="ulist"><ul><li><p>DB support; Oracle, MongoDB, &#8230;&#8203;</p></li><li><p>add more services</p></li><li><p>working towards production ready</p></li></ul></div></section><section id="_open_source"><h2>Open source</h2><div class="paragraph"><p><a href="http://mayfly.cd" class="bare">mayfly.cd</a><br>
+<a href="http://bolcom.github.io" class="bare">bolcom.github.io</a></p></div></section></section>
+<section id="_thank_you"><h2>Thank you</h2><div class="paragraph"><p><a href="https://mayflycd.github.io/mayfly-talks">Slides</a><br>
+<a href="http://mayfly.cd" class="bare">mayfly.cd</a><br>
+<a href="http://bolcom.github.io" class="bare">bolcom.github.io</a></p></div>
+<div class="paragraph"><p>Maarten Dirkse <a href="https://twitter.com/mdirkse">@mdirkse</a><br>
+Patrick van Dissel <a href="https://twitter.com/pvdissel">@pvdissel</a></p></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script type="text/javascript">// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, blood, league, moon, night, serif, simple, sky, solarized, white)
+  theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'linear',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'default',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'reveal.js/plugin/math/math.js', async: true}
+  ]
+});</script></body></html>
