@@ -31,7 +31,8 @@ The generated presentation output can be found, per subproject, in the `build/as
 
 == Videos
 Videos of Mayfly presentation
-[https://twitter.com/mdirkse]Maarten Dirkse presented Mayfly @ the http://www.meetup.com/Docker-Randstad/[Docker Randstad meetup group] on August 20th, 2015: https://www.youtube.com/watch?v=r6oeVbTA6v8[video (35:55)]
+
+- [https://twitter.com/mdirkse]Maarten Dirkse presented Mayfly @ the http://www.meetup.com/Docker-Randstad/[Docker Randstad meetup group] on August 20th, 2015: https://www.youtube.com/watch?v=r6oeVbTA6v8[video (35:55)]
 
 == References
 
