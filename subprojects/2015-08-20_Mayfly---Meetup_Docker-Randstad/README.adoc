@@ -1,0 +1,20 @@
+= Mayfly - Dockerize your user stories
+
+*user story*-centric +
+continuous delivery +
+*development* platform +
+using Docker
+
+Providing each user story with:
+
+- a feature branch
+- continuous integration on that branch
+- environment based on that branch
+- definition of done check to decide if it's production ready
+
+By defining everything-as-code so it can be versioned together with the code and always be in-sync:
+
+- build pipelines as code
+- environments as code
+- Definition of Done as code
+- tests as code

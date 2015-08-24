@@ -1,0 +1,94 @@
+:backend: revealjs
+:revealjs_theme: black
+:revealjs_customtheme: theme/bol.com-v1/bol.com.css
+:revealjs_control: true
+:revealjs_center: true
+:revealjs_history: true
+:revealjs_transition: linear
+:source-highlighter: highlightjs
+:highlightjs_style: highlight.js/styles/solarized_light.css
+:highlightjs_style_alternative: highlight.js/styles/solarized_dark.css
+// Relative to generated HTML
+:imagesdir: ./images
+////
+Relative to original asciidoc document,
+as source code is processed before creation
+of the html-file
+////
+:sources: ../..
+:hide-uri-scheme:
+
+= Mayfly: dockerize your user stories
+Maarten Dirkse <https://twitter.com/mdirkse[@mdirkse]>
+
+== Awesome logo
+image::mayfly-transparent.png[height=500]
+
+== bol.com context
+
+* scrum teams, 5-8 people
+* 130 services & apps (SOA, the good kind)
+* 2 week sprints
+
+== Problems we had @ bol.com
+
+* central, shared test environment
+* >1 teams in single codebase (unstable `master`)
+* giant release every 4 weeks
+
+Development process unsuited to continuous delivery
+
+[NOTE.speaker]
+--
+* What's the problem that Mayfly solves?
+** central test environment
+** multiple teams in single codebase
+** superbol
+Developer velocity severely impacted by dev setup, unable to cope with dev org growth
+--
+
+
+=== The solution: Mayfly
+
+*user story*-centric +
+continuous delivery +
+*development* platform +
+using Docker
+
+include::userstory.adoc[leveloffset=+1]
+include::mayfly.adoc[leveloffset=+1]
+include::extra-storyflow.adoc[leveloffset=+1]
+include::extra-rip-acc.adoc[leveloffset=+1]
+
+
+== Current state
+
+* beta-stage development
+* scope limited to simple services + DB
+* usage
+** 5 Mayfly services +
+   (eating our own dogfood)
+** 12 services of other teams
+
+
+== Future
+
+* add more services
+* working towards production ready
+** flesh out monitoring
+* better service discovery, isolation
+
+=== Open source
+
+http://mayfly.cd +
+http://bolcom.github.io
+
+
+== Thank you
+
+https://mayflycd.github.io/mayfly-talks[Slides] +
+http://mayfly.cd +
+http://bolcom.github.io
+
+
+Maarten Dirkse https://twitter.com/mdirkse[@mdirkse] +

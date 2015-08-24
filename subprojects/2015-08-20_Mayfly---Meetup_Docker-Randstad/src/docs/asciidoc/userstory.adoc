@@ -1,0 +1,27 @@
+= User story flow
+
+image::story-flow.png[height=500]
+
+[NOTE.speaker]
+--
+User stories flow from the backlog to production, +
+from todo to done on your agile board.
+--
+
+== User story
+
+- has a short-lived feature branch
+- has its own continuous integration
+- can be accepted independently
+- done == (ready for) production
+
+[NOTE.speaker]
+--
+a user story:
+
+- can be a short-lived feature branch
+- can have its own continuous integration
+- can be accepted independently
+- and when it's done, it should be ready for production
+  or better yet, on production
+--
