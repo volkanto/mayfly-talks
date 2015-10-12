@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Chris Kramer"><title>Mayfly</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="theme/bol.com-v1/bol.com.css" id="theme"><link href="highlight.js/styles/solarized_light.css" title="default syntax highlighting" rel="stylesheet"><link href="highlight.js/styles/solarized_dark.css" title="alternative syntax highlighting" rel="alternate stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><div id="header"><h1>Mayfly</h1><div class="details"><span class="author" id="author">Chris Kramer</span><br><span class="email" id="email"><a href="https://twitter.com/cjhkramer">@cjhkramer</a></span><br><span id="revdate">Software Engineer Continuous Delivery @ bol.com</span></div></div></section><section id="_bol_com_context"><h2>bol.com context</h2><div class="ulist"><ul><li><p>900 employees, more than 30 teams</p></li><li><p>Adopted Scrum in 2009:</p><div class="ulist"><ul><li><p>5 to 8 people per team</p></li><li><p>4 week Sprint rhythm</p></li></ul></div></li><li><p>Over 200 deployable projects</p></li><li><p>3 different release models</p></li></ul></div></section>
+<section><section id="_growing_pains"><h2>Growing pains&#8230;&#8203;</h2><div class="ulist"><ul><li><p>Shared TAXP platform</p></li><li><p>Automated staged release train every 4 weeks</p></li><li><p>Collectively burn down 700+ US each month</p></li><li><p>Responsible team per application</p></li><li><p>Cross team commits</p></li><li><p>&#8594; master never stable</p></li></ul></div><div class="paragraph"><p>Development process unsuited to support the growth of the organization</p></div><aside class="notes"><div class="ulist"><ul><li><p>What&#8217;s the problem that Mayfly solves?</p><div class="ulist"><ul><li><p>central test environment</p></li><li><p>multiple teams in single codebase</p></li><li><p>superbol
+Developer velocity severely impacted by dev setup, unable to cope with dev org growth</p></li></ul></div></li></ul></div></aside></section><section id="_the_solution_mayfly"><h2>The solution: Mayfly</h2><div class="paragraph"><p>Isolated <strong>User Story</strong>-centric<br>
+continuous delivery<br>
+<strong>development</strong> platform</p></div></section></section>
+<section><section id="_user_story_flow"><h2>User Story flow</h2><div class="imageblock" style=""><div class="content"><img src="./images/story-flow.png" alt="story flow" height="500"></div></div><aside class="notes"><div class="paragraph"><p>User stories flow from the backlog to production,<br>
+from todo to done on your agile board.</p></div></aside></section><section id="_user_story"><h2>User story</h2><div class="paragraph"><p>A User Story describes a single<br>
+feature that can be tested and accepted<br>
+in isolation, after which it can be (independently)<br>
+deployed to production.</p></div>
+<aside class="notes"><div class="paragraph"><p>a user story:</p></div>
+<div class="ulist"><ul><li><p>can be a short-lived feature branch</p></li><li><p>can have its own continuous integration</p></li><li><p>can be accepted independently</p></li><li><p>and when it&#8217;s done, it should be ready for production
+or better yet, on production</p></li></ul></div></aside></section></section>
+<section><section id="_mayfly"><h2>Mayfly</h2><div class="paragraph"><p>Provides each user story with:</p></div><div class="ulist"><ul><li><p>A feature branch</p></li><li><p>Continuous Integration</p></li><li><p>Virtual production-like environment</p></li><li><p>Definition-of-Done</p></li></ul></div><aside class="notes"><div class="paragraph"><p>So that&#8217;s what Mayfly provides :)</p></div>
+<div class="paragraph"><p>For each user story, you get:</p></div>
+<div class="ulist"><ul><li><p>a feature branch on the application repository</p></li><li><p>continuous integration on the feature branch</p></li><li><p>an environment for the user story based on the feature branch</p></li><li><p>and a verification if the user story is
+production ready, according to the Definition of Done</p></li></ul></div></aside></section><section id="_everything_as_code"><h2>Everything-as-code</h2><div class="ulist"><ul><li><p>Build pipelines as code</p></li><li><p>Environments as code</p></li><li><p>Definition-of-Done as code</p></li><li><p>Tests as code</p></li></ul></div>
+<div class="paragraph"><p>Teams in control; behaviours and configuration is stored in the application repository.</p></div>
+<aside class="notes"><div class="paragraph"><p>We do this by describing everything as code:</p></div>
+<div class="ulist"><ul><li><p>we use the Jenkins JobDSL to
+configure the build pipeline as code</p></li><li><p>we configure the environment as code
+in a deployment descriptor file</p></li><li><p>we describe the Definition of Done as code</p></li><li><p>and of course, you write tests for your code</p></li></ul></div>
+<div class="paragraph"><p>All these files are stored in the code repository,
+so it is always in-sync with the code it is for.</p></div></aside></section></section>
+<section id="_mayfly_principles"><h2>Mayfly Principles</h2><div class="ulist"><ul><li><p><code>master</code> == production</p></li><li><p>Deploy when it&#8217;s done</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Our implementation for Continuous Delivery
+strongly supports that the master branch of
+your application should always represent the
+state of your code in production.</p></div>
+<div class="paragraph"><p>If you diverge from that principle, the costs
+of fixing issues increase since you&#8217;ll be building
+up technical debt against your production environment</p></div></aside></section>
+<section><section id="_userstory_stages"><h2>UserStory Stages</h2><div class="imageblock" style=""><div class="content"><img src="./images/story-flow.png" alt="story flow" height="500"></div></div></section><section id="_start_working_on_a_story"><h2>Start working on a story</h2><div class="ulist"><ul><li><p>Jira &#8594; "In progress"</p></li><li><p>Create branch from master</p></li><li><p>Spin up CI environment (Jenkins, JobDSL)</p></li><li><p>Create virtual environment</p><div class="ulist"><ul><li><p>Start up Service Discovery (Consul)</p></li><li><p>Clone &amp; update application properties</p></li><li><p>Generate databases (Oracle, Postgres, Mongo)</p></li></ul></div></li><li><p>Install production 'master' container (Mesos, Marathon, Docker)</p></li></ul></div></section><section id="_make_a_change_commit"><h2>Make a change (commit)</h2><div class="ulist"><ul><li><p>Build pipeline builds commit as Docker image</p></li><li><p>Deploy new image to User Story environment</p></li><li><p>Run (System) Tests</p></li><li><p>(Re)evaluate Definition of Done (DoD)</p></li></ul></div></section><section id="_resolve_story"><h2>Resolve story</h2><div class="ulist"><ul><li><p>Jira &#8594; "Done"</p></li><li><p>Validate Definition of Done</p></li><li><p>Feature branch is merged to <code>master</code> (never any conflicts)</p></li><li><p>Destroy virtual environment</p></li><li><p>Deploy last UserStory to Production</p></li></ul></div></section></section>
+<section><section id="_what_about_performance_testing"><h2>What about Performance Testing?</h2><div class="ulist"><ul><li><p>&#8230;&#8203; in the UserStory environment?</p></li><li><p>&#8230;&#8203; on Production?</p></li><li><p>&#8230;&#8203; on cross-production?</p></li><li><p>&#8230;&#8203; on cross-production per featureset?</p></li></ul></div><aside class="notes"><div class="paragraph"><p>A combination of multiple solutions should give enough insight.</p></div></aside></section><section id="_userstory_environment"><h2>UserStory Environment</h2><div class="paragraph"><p>Script based performance-tests for each story.</p></div>
+<div class="ulist"><ul><li><p>Pros</p><div class="ulist"><ul><li><p>Isolated environment &amp; changeset (master+1)</p></li><li><p>Small scope with stubs</p></li><li><p>Huge incentive &#8594; DoD</p></li></ul></div></li><li><p>Cons</p><div class="ulist"><ul><li><p>Testing takes time</p></li><li><p>Behaviour of virtual environments could be unpredictable</p></li></ul></div></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Unfortunately testing takes time. You should limit the scope of what you&#8217;re testing.
+If you have a performance test of several hours, you&#8217;ll block your own process.
+It is unknown (to us) how well systems resources can be sharded in virtual environments.
+This solution either stands of falls with that.</p></div></aside></section><section id="_production"><h2>Production</h2><div class="paragraph"><p>Measurements based on alerting and monitoring</p></div>
+<div class="ulist"><ul><li><p>Pros</p><div class="ulist"><ul><li><p>Real usage, predictable resources</p></li><li><p>No test scripts to maintain</p></li></ul></div></li><li><p>Cons</p><div class="ulist"><ul><li><p>Fluctuating peak load</p></li><li><p>Everything must be measured</p></li><li><p>Continuous deployments interfere</p></li><li><p>System-as-a-whole test</p></li></ul></div></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>The biggest problems are that:
+- you cannot take the holiday load into account.
+- when a cascading problem arises, you&#8217;re most probably too late to fix it.</p></div></aside></section><section id="_cross_production"><h2>Cross-Production</h2><div class="paragraph"><p>Single high load shadow environment</p></div>
+<div class="ulist"><ul><li><p>Pros</p><div class="ulist"><ul><li><p>Peak load can be simulated</p></li><li><p>Stable resources</p></li></ul></div></li><li><p>Cons</p><div class="ulist"><ul><li><p>Continuous deployments interfere</p></li><li><p>Problem-focus causes test-debt</p></li></ul></div></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Testing on (cross)-production can be a valid method since the Mayfly process makes disrupting the Sprint less intrusive.
+Since your stable branch is always master, you can park other work and start fixing the (performance) issue at hand.
+The context switch should also be acceptable since in your mind you were working on Master+1.
+You cannot focus on one problem without creating test-debt for the features to come</p></div></aside></section><section id="_cross_production_per_featureset"><h2>Cross-Production per featureset</h2><div class="paragraph"><p>Multi high load shadow environments per featureset</p></div>
+<div class="ulist"><ul><li><p>Pros</p><div class="ulist"><ul><li><p>Peak load can be simulated</p></li><li><p>Fixed set of features per run</p></li><li><p>Allows automatic pinpointing</p></li></ul></div></li><li><p>Cons:</p><div class="ulist"><ul><li><p>Behaviour of virtual environments could be unpredictable</p></li><li><p>Requires all dependencies to run in cluster</p></li></ul></div></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Method: Shadow environment per set of features (time based)
+with constant load using testscripts
+Based on the versions of your application,
+ you can define the changelog between versions.
+If you test too many features at once,
+ you simply make smaller slices.
+If you need to pinpoint a problem, you could do an automatic bisect
+and run the specific test until you find the feature responsible
+Just like with the UserStory environment,
+we do not (yet) know how virtual resources behave under load</p></div></aside></section><section id="_so"><h2>So&#8230;&#8203; ?</h2><div class="ulist"><ul><li><p>&#8230;&#8203; in the UserStory environment!</p></li><li><p>&#8230;&#8203; on Production!</p></li><li><p>&#8230;&#8203; on cross-production!</p></li><li><p>&#8230;&#8203; on cross-production per featureset!</p></li></ul></div></section></section>
+<section id="_mayfly_current_state"><h2>Mayfly Current state</h2><div class="ulist"><ul><li><p>Mayfly model reached maturity</p></li><li><p>Proven company track-record:</p><div class="ulist"><ul><li><p>28 applications are Mayfly enabled</p></li><li><p>of which 6 are Mayfly services</p></li><li><p>500+ mayfly enabled UserStories</p></li></ul></div></li><li><p>Integrating with subsystems</p></li><li><p>Database Support for Oracle, Postgres &amp; Mongo</p></li></ul></div></section>
+<section><section id="_future"><h2>Future</h2><div class="ulist"><ul><li><p>Add more applications</p></li><li><p>Container deployments to Production</p></li><li><p>Run clustered production</p></li><li><p>Design for extension</p></li></ul></div></section><section id="_open_source"><h2>Open source</h2><div class="paragraph"><p><a href="http://mayfly.cd" class="bare">mayfly.cd</a><br>
+<a href="http://bolcom.github.io" class="bare">bolcom.github.io</a></p></div></section></section>
+<section id="_we_re_hiring"><h2>We&#8217;re hiring!</h2><div class="paragraph"><p><a href="https://banen.bol.com" class="bare">banen.bol.com</a></p></div></section>
+<section id="_thank_you"><h2>Thank you</h2><div class="paragraph"><p><a href="https://mayflycd.github.io/mayfly-talks">Slides</a><br>
+<a href="http://mayfly.cd" class="bare">mayfly.cd</a><br>
+<a href="http://bolcom.github.io" class="bare">bolcom.github.io</a></p></div>
+<div class="paragraph"><p>Chris Kramer <a href="https://twitter.com/cjhkramer">@cjhkramer</a><br></p></div></section>
+<section id="_extra"><h2>Extra</h2></section>
+<section><section id="_but_what_about_conflicts_on_code_master_code"><h2>But what about conflicts on <code>master</code>?</h2><div class="ulist"><ul><li class="fragment"><p>That never happens (no, really)</p></li></ul></div></section><section id="_automated_scm_workflow" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow1.png" alt="scmflow1"></div></div></section><section id="_automated_scm_workflow_2" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow2.png" alt="scmflow2"></div></div></section><section id="_automated_scm_workflow_3" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow3.png" alt="scmflow3"></div></div></section><section id="_automated_scm_workflow_4" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow4.png" alt="scmflow4"></div></div></section><section id="_automated_scm_workflow_5" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow5.png" alt="scmflow5"></div></div></section><section id="_automated_scm_workflow_6" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow6.png" alt="scmflow6"></div></div></section><section id="_automated_scm_workflow_7" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow7.png" alt="scmflow7"></div></div></section><section id="_automated_scm_workflow_8" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow8.png" alt="scmflow8"></div></div></section><section id="_automated_scm_workflow_9" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow9.png" alt="scmflow9"></div></div></section><section id="_automated_scm_workflow_10" data-transition="none"><h2>Automated SCM workflow</h2><div class="imageblock" style=""><div class="content"><img src="./images/scm-flow/scmflow10.png" alt="scmflow10"></div></div></section></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script type="text/javascript">// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, blood, league, moon, night, serif, simple, sky, solarized, white)
+  theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'linear',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'default',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'reveal.js/plugin/math/math.js', async: true}
+  ]
+});</script></body></html>
