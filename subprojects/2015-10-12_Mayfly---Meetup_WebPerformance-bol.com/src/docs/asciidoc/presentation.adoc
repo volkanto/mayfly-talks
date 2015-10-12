@@ -1,0 +1,94 @@
+:backend: revealjs
+:revealjs_theme: black
+:revealjs_customtheme: theme/bol.com-v1/bol.com.css
+:revealjs_control: true
+:revealjs_center: true
+:revealjs_history: true
+:revealjs_transition: linear
+:source-highlighter: highlightjs
+:highlightjs_style: highlight.js/styles/solarized_light.css
+:highlightjs_style_alternative: highlight.js/styles/solarized_dark.css
+// Relative to generated HTML
+:imagesdir: ./images
+////
+Relative to original asciidoc document,
+as source code is processed before creation
+of the html-file
+////
+:sources: ../..
+:hide-uri-scheme:
+
+= Mayfly: feature centric development
+Chris Kramer <https://twitter.com/cjhkramer[@cjhkramer]>
+Software Engineer Continuous Delivery
+
+== bol.com context
+* 900 employees, more than 30 teams
+* Adopted Scrum in 2009:
+** 5 to 8 people per team
+** 4 week Sprint Rhythm
+* Over 200 deployable projects
+* 3 different release models
+
+== Growing pains...
+
+* Shared TAXP platform
+* Automated staged release train every 4 weeks
+* Collectively burn down 700+ each month
+* Responsible team per application
+* Cross team commits
+* -> code base will never be stable
+
+Development process unsuited to support the growth of the organization
+
+[NOTE.speaker]
+--
+* What's the problem that Mayfly solves?
+** central test environment
+** multiple teams in single codebase
+** superbol
+Developer velocity severely impacted by dev setup, unable to cope with dev org growth
+--
+
+=== The solution: Mayfly
+
+*User Story*-centric +
+continuous delivery +
+*development* platform +
+using virtual environments with Docker
+
+include::userstory.adoc[leveloffset=+1]
+include::mayfly.adoc[leveloffset=+1]
+include::extra-storyflow.adoc[leveloffset=+1]
+include::performance-testing.adoc[leveloffset=+1]
+
+== Current state
+
+* Mayfly model reached maturity
+* Integrating with subsystems
+* Database Support for Oracle, Postgres & Mongo
+* Proven company track-record:
+** 28 applications are Mayfly enabled
+** of which 6 are Mayfly services
+** 500+ mayfly enabled UserStories
+
+== Future
+
+* Add more applications
+* Container deployments to Production
+* Run clustered production
+* Design for extension
+* Team-configurable monitoring & alerting
+
+=== Open source
+
+http://mayfly.cd +
+http://bolcom.github.io
+
+== Thank you
+
+https://mayflycd.github.io/mayfly-talks[Slides] +
+http://mayfly.cd +
+http://bolcom.github.io
+
+Chris Kramer https://twitter.com/cjhkramer[@cjhkramer] +

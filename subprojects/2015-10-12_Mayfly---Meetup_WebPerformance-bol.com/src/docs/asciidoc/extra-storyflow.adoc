@@ -1,0 +1,30 @@
+= UserStory Stages
+
+image::story-flow.png[height=500]
+
+== Start working on a story
+
+* Jira -> "In progress"
+* Create branch from master
+* Spin up CI environment (Jenkins + JobDSL)
+* Create virtual environment
+** Start up Service Discovery (Consul)
+** Clone & update application properties
+** Spin up databases (Oracle, Postgres, Mongo)
+* Install Production 'master' container (Mesos, Marathon, Docker)
+
+== Make a change (commit)
+
+* Build pipeline builds commit as Docker image
+* Deploy new image to User Story environment
+* Run (System) Tests
+* (Re)evaluate Definition of Done (DoD)
+
+== Resolve story
+
+* Jira -> "Done"
+* Validate Definition of Done
+* Feature branch is merged to `master` (never any conflicts)
+* Destroy virtual environment
+* Last user story Docker image is deployed to production
+

@@ -1,0 +1,28 @@
+= User Story flow
+
+image::story-flow.png[height=500]
+
+[NOTE.speaker]
+--
+User stories flow from the backlog to production, +
+from todo to done on your agile board.
+--
+
+== User story
+
+A User Story describes a single +
+feature that can be tested and accepted +
+in isolation, after which it can be independently +
+deployed to production.
+
+
+[NOTE.speaker]
+--
+a user story:
+
+- can be a short-lived feature branch
+- can have its own continuous integration
+- can be accepted independently
+- and when it's done, it should be ready for production
+  or better yet, on production
+--
