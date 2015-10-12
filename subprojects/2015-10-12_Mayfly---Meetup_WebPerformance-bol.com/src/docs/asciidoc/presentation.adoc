@@ -64,12 +64,12 @@ include::performance-testing.adoc[leveloffset=+1]
 == Mayfly Current state
 
 * Mayfly model reached maturity
-* Integrating with subsystems
-* Database Support for Oracle, Postgres & Mongo
 * Proven company track-record:
 ** 28 applications are Mayfly enabled
 ** of which 6 are Mayfly services
 ** 500+ mayfly enabled UserStories
+* Integrating with subsystems
+* Database Support for Oracle, Postgres & Mongo
 
 == Future
 
