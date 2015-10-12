@@ -85,6 +85,10 @@ include::performance-testing.adoc[leveloffset=+1]
 http://mayfly.cd +
 http://bolcom.github.io
 
+== We're hiring!
+
+https://banen.bol.com
+
 == Thank you
 
 https://mayflycd.github.io/mayfly-talks[Slides] +
@@ -92,3 +96,7 @@ http://mayfly.cd +
 http://bolcom.github.io
 
 Chris Kramer https://twitter.com/cjhkramer[@cjhkramer] +
+
+== Extra
+
+include::extra-scmflow.adoc[leveloffset=+1]
