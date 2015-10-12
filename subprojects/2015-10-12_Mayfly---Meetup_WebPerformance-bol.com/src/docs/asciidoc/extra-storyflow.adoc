@@ -26,5 +26,5 @@ image::story-flow.png[height=500]
 * Validate Definition of Done
 * Feature branch is merged to `master` (never any conflicts)
 * Destroy virtual environment
-* Last user story Docker image is deployed to production
+* Deploy last UserStory to Production
 

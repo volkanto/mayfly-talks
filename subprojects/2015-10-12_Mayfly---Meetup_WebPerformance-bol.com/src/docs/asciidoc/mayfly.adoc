@@ -26,9 +26,8 @@ For each user story, you get:
 - Environments as code
 - Definition-of-Done as code
 - Tests as code
-- Definition-of-Done
 
-Teams in control; behaviours are stored in the application repository.
+Teams in control; behaviours and configuration is stored in the application repository.
 
 [NOTE.speaker]
 --

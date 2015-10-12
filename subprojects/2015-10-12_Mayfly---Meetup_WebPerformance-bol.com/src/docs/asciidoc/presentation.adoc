@@ -20,7 +20,7 @@ of the html-file
 
 = Mayfly: feature centric development
 Chris Kramer <https://twitter.com/cjhkramer[@cjhkramer]>
-Software Engineer Continuous Delivery
+Software Engineer Continuous Delivery @ bol.com
 
 == bol.com context
 * 900 employees, more than 30 teams
@@ -52,10 +52,9 @@ Developer velocity severely impacted by dev setup, unable to cope with dev org g
 
 === The solution: Mayfly
 
-*User Story*-centric +
+*Isolated User Story*-centric +
 continuous delivery +
-*development* platform +
-using virtual isolation environments
+*development* platform
 
 include::userstory.adoc[leveloffset=+1]
 include::mayfly.adoc[leveloffset=+1]
