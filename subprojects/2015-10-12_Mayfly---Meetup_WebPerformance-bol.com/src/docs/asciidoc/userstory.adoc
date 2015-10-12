@@ -12,7 +12,7 @@ from todo to done on your agile board.
 
 A User Story describes a single +
 feature that can be tested and accepted +
-in isolation, after which it can be independently +
+in isolation, after which it can be (independently) +
 deployed to production.
 
 

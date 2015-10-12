@@ -6,12 +6,12 @@ image::story-flow.png[height=500]
 
 * Jira -> "In progress"
 * Create branch from master
-* Spin up CI environment (Jenkins + JobDSL)
+* Spin up CI environment (Jenkins, JobDSL)
 * Create virtual environment
 ** Start up Service Discovery (Consul)
 ** Clone & update application properties
-** Spin up databases (Oracle, Postgres, Mongo)
-* Install Production 'master' container (Mesos, Marathon, Docker)
+** Generate databases (Oracle, Postgres, Mongo)
+* Install production 'master' container (Mesos, Marathon, Docker)
 
 == Make a change (commit)
 

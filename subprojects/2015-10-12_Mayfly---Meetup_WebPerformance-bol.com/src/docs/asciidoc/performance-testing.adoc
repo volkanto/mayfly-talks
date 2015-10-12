@@ -1,18 +1,25 @@
 = What about Performance Testing?
 
-[NOTE.speaker]
---
-A combination of multiple solutions should give enough insight.
---
-
 - ... in the UserStory environment?
 - ... on Production?
 - ... on cross-production?
 - ... on cross-production per featureset?
 
-== In the UserStory Environment
+[NOTE.speaker]
+--
+A combination of multiple solutions should give enough insight.
+--
 
-Method: Delta based performance-tests for each story with testscripts.
+== UserStory Environment
+Script based performance-tests for each story.
+
+* Pros
+** Isolated environment & changeset (master+1)
+** Small scope with stubs
+** Huge incentive -> DoD
+* Cons
+** Testing takes time
+** Behaviour of virtual environments could be unpredictable
 
 [NOTE.speaker]
 --
@@ -22,19 +29,17 @@ It is unknown (to us) how well systems resources can be sharded in virtual envir
 This solution either stands of falls with that.
 --
 
-Pros:
-- Isolated (predictable?) environment
-- Small scope, minimal is one component with stubs
-- Small changeset; UserStory is always master+1
-- Huge incentive -> Definition of Done
+== Production
+Measurements based on alerting and monitoring
 
-Cons:
-- Performance Testing takes time
-- Behaviour of virtual environments could be unpredictable
-
-== On Production
-
-Method: Measurements based on alerting and monitoring
+* Pros
+** Real usage, predictable resources
+** No test scripts to maintain
+* Cons
+** Fluctuating peak load
+** Everything must be measured
+** Continuous deployments interfere
+** System-as-a-whole test
 
 [NOTE.speaker]
 --
@@ -43,55 +48,54 @@ The biggest problems are that:
 - when a cascading problem arises, you're most probably too late to fix it.
 --
 
-Pros:
-- Real usage
-- No test scripts to maintain
-- Amount of resources is stable
+== Cross-Production
 
-Cons:
-- Peak load differs throughout the year
-- Measure everything, complete with A/B testing
-- Hard to pinpoint the problem due to continuous deployments
-- Testing the system as a whole instead of components
+Single high load shadow environment
 
-== On Cross-Production
-
-Method: One shadow environment with constant load and deployments using testscripts
+* Pros
+** Peak load can be simulated
+** Stable resources
+* Cons
+** Continuous deployments interfere
+** Problem-focus causes test-debt
 
 [NOTE.speaker]
 --
 Testing on (cross)-production can be a valid method since the Mayfly process makes disrupting the Sprint less intrusive.
 Since your stable branch is always master, you can park other work and start fixing the (performance) issue at hand.
 The context switch should also be acceptable since in your mind you were working on Master+1.
+You cannot focus on one problem without creating test-debt for the features to come
 --
 
-Pros:
-- Peak load can be simulated
-- Amount of resources is stable
-- Compatible with old infrastructure
+== Cross-Production per featureset
 
-Cons:
-- Hard to pinpoint the problem due to continuous deployments
-- New features continuously stream to production.
-- You cannot focus on one problem without creating test-debt for the features to come
+Multi high load shadow environments per featureset
 
-== On Cross-Production per featureset
+* Pros
+** Peak load can be simulated
+** Fixed set of features per run
+** Allows automatic pinpointing
+* Cons:
+** Behaviour of virtual environments could be unpredictable
+** Requires all dependencies to run in cluster
 
 [NOTE.speaker]
 --
-Based on the versions of your application you can define the changelog between versions.
-If you test too many features at once, you simply make smaller slices.
-If you need to pinpoint a problem, you could do an automatic bisect and run the specific test until you find the feature responsible
-Just like with the UserStory environment, we do not (yet) know how virtual resources behave under load
+Method: Shadow environment per set of features (time based)
+with constant load using testscripts
+Based on the versions of your application,
+ you can define the changelog between versions.
+If you test too many features at once,
+ you simply make smaller slices.
+If you need to pinpoint a problem, you could do an automatic bisect
+and run the specific test until you find the feature responsible
+Just like with the UserStory environment,
+we do not (yet) know how virtual resources behave under load
 --
 
-Method: Shadow environment per set of features (time based) with constant load using testscripts
+= So...?
 
-Pros:
-- Peak load can be simulated
-- Environment should be predictable
-- Fixed set of features per run, easier to locate problems
-
-Cons:
-- Behaviour of virtual environments could be unpredictable
-- Requires all dependencies to run in cluster
+- ... in the UserStory environment!
+- ... on Production!
+- ... on cross-production!
+- ... on cross-production per featureset!

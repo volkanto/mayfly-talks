@@ -26,7 +26,7 @@ Software Engineer Continuous Delivery
 * 900 employees, more than 30 teams
 * Adopted Scrum in 2009:
 ** 5 to 8 people per team
-** 4 week Sprint Rhythm
+** 4 week Sprint rhythm
 * Over 200 deployable projects
 * 3 different release models
 
@@ -55,14 +55,14 @@ Developer velocity severely impacted by dev setup, unable to cope with dev org g
 *User Story*-centric +
 continuous delivery +
 *development* platform +
-using virtual environments with Docker
+using virtual isolation environments
 
 include::userstory.adoc[leveloffset=+1]
 include::mayfly.adoc[leveloffset=+1]
 include::extra-storyflow.adoc[leveloffset=+1]
 include::performance-testing.adoc[leveloffset=+1]
 
-== Current state
+== Mayfly Current state
 
 * Mayfly model reached maturity
 * Integrating with subsystems
