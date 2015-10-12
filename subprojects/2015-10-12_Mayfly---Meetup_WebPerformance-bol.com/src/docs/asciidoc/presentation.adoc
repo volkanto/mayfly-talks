@@ -18,7 +18,7 @@ of the html-file
 :sources: ../..
 :hide-uri-scheme:
 
-= Mayfly: feature centric development
+= Mayfly
 Chris Kramer <https://twitter.com/cjhkramer[@cjhkramer]>
 Software Engineer Continuous Delivery @ bol.com
 
@@ -52,7 +52,7 @@ Developer velocity severely impacted by dev setup, unable to cope with dev org g
 
 === The solution: Mayfly
 
-*Isolated User Story*-centric +
+Isolated *User Story*-centric +
 continuous delivery +
 *development* platform
 
@@ -73,6 +73,7 @@ include::performance-testing.adoc[leveloffset=+1]
 
 == Future
 
+* Automated testing
 * Add more applications
 * Container deployments to Production
 * Run clustered production

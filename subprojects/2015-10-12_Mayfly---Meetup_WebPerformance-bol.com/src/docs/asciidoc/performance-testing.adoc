@@ -93,7 +93,7 @@ Just like with the UserStory environment,
 we do not (yet) know how virtual resources behave under load
 --
 
-= So...?
+== So... ?
 
 - ... in the UserStory environment!
 - ... on Production!
