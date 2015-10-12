@@ -34,10 +34,10 @@ Software Engineer Continuous Delivery @ bol.com
 
 * Shared TAXP platform
 * Automated staged release train every 4 weeks
-* Collectively burn down 700+ each month
+* Collectively burn down 700+ US each month
 * Responsible team per application
 * Cross team commits
-* -> code base will never be stable
+* -> master never stable
 
 Development process unsuited to support the growth of the organization
 
