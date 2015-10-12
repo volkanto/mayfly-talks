@@ -77,7 +77,6 @@ include::performance-testing.adoc[leveloffset=+1]
 * Container deployments to Production
 * Run clustered production
 * Design for extension
-* Team-configurable monitoring & alerting
 
 === Open source
 
